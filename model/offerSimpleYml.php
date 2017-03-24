@@ -3,11 +3,8 @@ require_once 'offerYml.php';
 /**
  * offerSimpleYml
  *
- * @author vad
+ * @author DartVadius
  */
 class offerSimpleYml extends offerYml {
     
 }
-
-$test = new offerSimpleYml();
-$test->hello();

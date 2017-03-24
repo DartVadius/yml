@@ -2,6 +2,7 @@
 
 return [
     'required' => [
+        'encode' => 'UTF-8',
         'name' => 'short company name',
         'company' => 'full company name',
         'url' => 'url to store main page',

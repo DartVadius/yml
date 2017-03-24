@@ -3,7 +3,7 @@
 /**
  * yml header
  *
- * @author vad
+ * @author DartVadius
  */
 class ymlHead {
 
@@ -12,7 +12,11 @@ class ymlHead {
      * @var array
      */
     private $params = [];
-
+    /**
+     *
+     * @var string 
+     */
+    private $encode = 'UTF-8';
     /**
      * short company name
      * @var string
@@ -78,7 +82,7 @@ class ymlHead {
      * @var integer (0, 1)
      */
     private $cpa = 1;
-    
+
     /**
      *
      * @var string
@@ -216,7 +220,7 @@ class ymlHead {
     }
 
     /**
-     * 
+     *
      * @param string || array $cost delivery cost or array with delivery data
      * @param string $days delivery terms
      * @param string $before Time of registration of the order, before which the specified terms and conditions of delivery are valid
@@ -226,7 +230,7 @@ class ymlHead {
         if (is_array($cost)) {
             foreach ($cost as $value) {
                 $arr = [];
-                if (!empty($value[0]) && is_numeric($value[0])) {
+                if (!empty($value[0]) && is_numeric($value[0]) && !empty($value[1])) {
                     $arr['cost'] = $value[0];
                     $arr['days'] = $value[1];
                 } else {
@@ -239,15 +243,21 @@ class ymlHead {
             }
         } else {
             $arr = [];
-            $arr['days'] = $days;
-            $arr['before'] = $before;
             $arr['cost'] = $cost;
+            if (!empty($days)) {
+                $arr['days'] = $days;
+            } else {
+                throw new Exception('Required fields are undefined');
+            }
+            if (!empty($before)) {
+                $arr['before'] = $before;
+            }
             array_push($this->deliveryOptions, $arr);
         }
     }
 
     /**
-     * 
+     *
      * @param int $val
      * @throws Exception
      */
@@ -258,9 +268,9 @@ class ymlHead {
             throw new Exception('Uncorrect value');
         }
     }
-    
+
     /**
-     * 
+     *
      * @param string $value
      * @return boolean
      */
@@ -272,102 +282,6 @@ class ymlHead {
         }
     }
 
-    /**
-     * 
-     * @param string $name
-     * @return boolean
-     */
-    private function nameValidate($name) {
-        if (strlen($name) > 20) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
-    }
-
-    /**
-     * validate currency in Head
-     * 
-     * @param string $id
-     * @param string $value
-     * @return boolean
-     */
-    private function currencyValidate($id, $value) {
-        $idArr = ['RUR', 'RUB', 'UAH', 'BYN', 'KZT', 'USD', 'EUR'];
-        $valueArr = ['CBRF', 'NBU', 'CB', 'NBK'];
-        if ((is_numeric($value) || in_array($value, $valueArr)) && in_array($id, $idArr)) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    }
-
-    /**
-     * validate email in Head
-     * 
-     * @param string $email
-     * @return boolean
-     */
-    private function emailValidate($email) {
-        $s = '"';
-        if (preg_match("/^(\w+([\.\w+])*)@\w+(\.\w+)?\.\w{2,3}$/i", $email) || preg_match("/^$s{1}.+$s{1}@\w+(\.\w+)?\.\w{2,3}$/i", $email)) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    }
-
-    /**
-     * validate type of variables and connections to parent categories in Head
-     * 
-     * @param array $categories
-     * @return boolean
-     */
-    private function categoryValidate($categories) {
-        $id = [];
-        foreach ($categories as $category) {
-            if (!empty($category['id']) && is_numeric($category['id']) && $category['id'] !== 0 && strlen($category['id']) < 19) {
-                array_push($id, $category['id']);
-            } else {
-                return FALSE;
-            }
-        }
-        foreach ($categories as $category) {
-            if (!empty($category['parentId']) && (!in_array($category['parentId'], $id) ||
-                    !is_numeric($category['parentId']) ||
-                    stripos($category['parentId'], '.') !== FALSE ||
-                    $category['parentId'] === 0)) {
-                return FALSE;
-            }
-        }
-        if (count($id) !== count(array_unique($id))) {
-            return FALSE;
-        }
-        return TRUE;
-    }
-
-    /**
-     * validate delivery options in Head and offer
-     * 
-     * @param array $delivery
-     * @return boolean
-     */
-    private function deliveryValidate($delivery) {
-        if (count($delivery) > 5) {
-            return FALSE;
-        }
-        foreach ($delivery as $option) {
-            if (!is_numeric($option['cost']) || stripos($option['cost'], '.') !== FALSE) {
-                return FALSE;
-            }
-        }
-        return TRUE;
-    }
-
-    public function valid() {
-        var_dump($this->categoryValidate($this->categories));
-    }
-
 }
 
 $s = new ymlHead();
@@ -375,16 +289,16 @@ $s->setCurrencies('USD', '22.5');
 $g = [
     ['name', 1, 3],
     ['name2', 3],
-    ['name3', 4, 1],
+    ['name3', 4, 3],
 ];
 $cost = [
     [500, '2-4', '15'],
     [750, 7],
-    [800],
+    [800, 5],
     ['1000', 25, '7']
 ];
 $s->setDeliveryOptions($cost);
 $s->setCategory($g);
 
 print_r($s);
-$s->valid();
+//$s->valid();
