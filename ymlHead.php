@@ -78,22 +78,37 @@ class ymlHead {
      * @var integer (0, 1)
      */
     private $cpa = 1;
+    
+    /**
+     *
+     * @var string
+     */
+    private $adult = NULL;
 
     public function __construct() {
-        $this->params = require_once (__DIR__ . '/config/config.php');
-        foreach ($this->params['required'] as $key => $value) {
-            if (is_array($value)) {
-                $newArr = [];
-                foreach ($value as $arrKey => $arrValue) {
-                    if ($this->currencieValidate($arrKey, $arrValue)) {
+        if (file_exists(__DIR__ . '/config/config.php')) {
+            $this->params = require_once (__DIR__ . '/config/config.php');
+            foreach ($this->params['required'] as $key => $value) {
+                if (is_array($value)) {
+                    $newArr = [];
+                    foreach ($value as $arrKey => $arrValue) {
                         $newArr[$arrKey] = $arrValue;
-                    } else {
-                        throw new Exception('Incorrect currency values');
                     }
+                    $this->$key = $newArr;
+                } else {
+                    $this->$key = $value;
                 }
-                $this->$key = $newArr;
-            } else {
-                $this->$key = $value;
+            }
+            foreach ($this->params['optional'] as $key => $value) {
+                if (is_array($value)) {
+                    $newArr = [];
+                    foreach ($value as $arrKey => $arrValue) {
+                        $newArr[$arrKey] = $arrValue;
+                    }
+                    $this->$key = $newArr;
+                } else {
+                    $this->$key = $value;
+                }
             }
         }
     }
@@ -208,25 +223,52 @@ class ymlHead {
      * @throws Exception
      */
     public function setDeliveryOptions($cost, $days = NULL, $before = NULL) {
-        $arr = [];
         if (is_array($cost)) {
             foreach ($cost as $value) {
-                if (!empty($value[0]) && !empty($value[1]) && is_numeric($value[0])) {
+                $arr = [];
+                if (!empty($value[0]) && is_numeric($value[0])) {
                     $arr['cost'] = $value[0];
                     $arr['days'] = $value[1];
                 } else {
                     throw new Exception('Required fields are undefined');
                 }
                 if (!empty($value[2])) {
-                    $arr['order'] = $value[2];
+                    $arr['before'] = $value[2];
                 }
                 array_push($this->deliveryOptions, $arr);
             }
         } else {
+            $arr = [];
             $arr['days'] = $days;
             $arr['before'] = $before;
             $arr['cost'] = $cost;
             array_push($this->deliveryOptions, $arr);
+        }
+    }
+
+    /**
+     * 
+     * @param int $val
+     * @throws Exception
+     */
+    public function setCPA($val) {
+        if ($val == 1 || $val == 0) {
+            $this->cpa = $val;
+        } else {
+            throw new Exception('Uncorrect value');
+        }
+    }
+    
+    /**
+     * 
+     * @param string $value
+     * @return boolean
+     */
+    public function setAdult($value) {
+        if ($value == 'false' || $value == 'true') {
+            $this->adult = $value;
+        } else {
+            return FALSE;
         }
     }
 
@@ -244,12 +286,13 @@ class ymlHead {
     }
 
     /**
-     *
+     * validate currency in Head
+     * 
      * @param string $id
      * @param string $value
      * @return boolean
      */
-    private function currencieValidate($id, $value) {
+    private function currencyValidate($id, $value) {
         $idArr = ['RUR', 'RUB', 'UAH', 'BYN', 'KZT', 'USD', 'EUR'];
         $valueArr = ['CBRF', 'NBU', 'CB', 'NBK'];
         if ((is_numeric($value) || in_array($value, $valueArr)) && in_array($id, $idArr)) {
@@ -260,7 +303,8 @@ class ymlHead {
     }
 
     /**
-     *
+     * validate email in Head
+     * 
      * @param string $email
      * @return boolean
      */
@@ -274,7 +318,7 @@ class ymlHead {
     }
 
     /**
-     * validate type of variables and connections to parent categories
+     * validate type of variables and connections to parent categories in Head
      * 
      * @param array $categories
      * @return boolean
@@ -282,21 +326,28 @@ class ymlHead {
     private function categoryValidate($categories) {
         $id = [];
         foreach ($categories as $category) {
-            if (!empty($category['id']) && is_numeric($category['id'])) {
+            if (!empty($category['id']) && is_numeric($category['id']) && $category['id'] !== 0 && strlen($category['id']) < 19) {
                 array_push($id, $category['id']);
             } else {
                 return FALSE;
             }
         }
         foreach ($categories as $category) {
-            if (!empty($category['parentId']) && !in_array($category['parentId'], $id)) {
+            if (!empty($category['parentId']) && (!in_array($category['parentId'], $id) ||
+                    !is_numeric($category['parentId']) ||
+                    stripos($category['parentId'], '.') !== FALSE ||
+                    $category['parentId'] === 0)) {
                 return FALSE;
             }
+        }
+        if (count($id) !== count(array_unique($id))) {
+            return FALSE;
         }
         return TRUE;
     }
 
     /**
+     * validate delivery options in Head and offer
      * 
      * @param array $delivery
      * @return boolean
@@ -333,7 +384,7 @@ $cost = [
     ['1000', 25, '7']
 ];
 $s->setDeliveryOptions($cost);
-//$s->setCategory($g);
-//$s->valid();
+$s->setCategory($g);
 
 print_r($s);
+$s->valid();
