@@ -1,5 +1,4 @@
 <?php
-require_once 'offerYml.php';
 
 /**
  * offerBookAllYml
@@ -11,42 +10,47 @@ abstract class offerBookAllYml extends offerYml {
      *
      * @var string 
      */
-    protected $author = NULL;
+    protected $author = '';
     /**
      *
      * @var string 
      */
-    protected $publisher = NULL;
+    protected $publisher = '';
     /**
      *
      * @var string 
      */
-    protected $series = NULL;
+    protected $series = '';
+    /**
+     *
+     * @var int
+     */
+    protected $year = '';
     /**
      *
      * @var string 
      */
-    protected $isbn = NULL;
+    protected $isbn = '';
     /**
      *
      * @var string 
      */
-    protected $volume = NULL;
+    protected $volume = '';
     /**
      *
      * @var string 
      */
-    protected $part = NULL;
+    protected $part = '';
     /**
      *
      * @var string 
      */
-    protected $language = NULL;
+    protected $language = '';
     /**
      *
      * @var string 
      */
-    protected $tableOfContents = NULL;
+    protected $tableOfContents = '';
         
     /**
      * 
@@ -69,6 +73,14 @@ abstract class offerBookAllYml extends offerYml {
     public function setSeries($series) {
         $this->series = $series;
     }
+    /**
+     * 
+     * @param int $year
+     */
+    public function setYear($year) {
+        $this->year = $year;
+    }
+
     /**
      * 
      * @param string $isbn
@@ -103,5 +115,20 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setTableOfContents($table) {
         $this->tableOfContents = $table;
-    }    
+    }
+    public function getOffer() {
+        $offer = parent::getOffer();
+        $offer['requared']['type'] = $this->type;        
+        $offer['requared']['ISBN'] = $this->isbn;
+        $offer['optional']['author'] = $this->author;
+        $offer['optional']['publisher'] = $this->publisher;
+        $offer['optional']['series'] = $this->series;
+        $offer['optional']['year'] = $this->year;
+        $offer['optional']['volume'] = $this->volume;
+        $offer['optional']['part'] = $this->part;
+        $offer['optional']['language'] = $this->language;
+        $offer['optional']['table_of_contents'] = $this->tableOfContents;
+        unset($offer['optional']['rec']);
+        return $offer;
+    }
 }

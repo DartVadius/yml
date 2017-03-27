@@ -1,6 +1,5 @@
 <?php
 
-require_once 'functions.php';
 
 /**
  * offerYml
@@ -13,86 +12,86 @@ abstract class offerYml {
      *
      * @var string 
      */
-    protected $type = NULL;
+    protected $type = '';
     /**
      *
      * @var string
      */
-    protected $name = NULL;
+    protected $name = '';
 
     /**
      *
      * @var string
      */
-    protected $model = NULL;
+    protected $model = '';
 
     /**
      *
      * @var string
      */
-    protected $vendor = NULL;
+    protected $vendor = '';
 
     /**
      *
      * @var string
      */
-    protected $vendorCode = NULL;
+    protected $vendorCode = '';
 
     /**
      * product id
      *
      * @var string
      */
-    protected $id = NULL;
+    protected $id = '';
 
     /**
      *
      * @var int
      */
-    protected $cbid = NULL;
+    protected $cbid = '';
 
     /**
      *
      * @var int
      */
-    protected $bid = NULL;
+    protected $bid = '';
 
     /**
      *
      * @var int
      */
-    protected $fee = NULL;
+    protected $fee = '';
 
     /**
      * url to product
      *
      * @var string
      */
-    protected $url = NULL;
+    protected $url = '';
 
     /**
      *
      * @var type float
      */
-    protected $price = NULL;
+    protected $price = '';
 
     /**
      *
      * @var type float
      */
-    protected $oldPrice = NULL;
+    protected $oldPrice = '';
 
     /**
      *
      * @var string
      */
-    protected $currencyId = NULL;
+    protected $currencyId = '';
 
     /**
      *
      * @var int
      */
-    protected $categoryId = NULL;
+    protected $categoryId = '';
 
     /**
      *
@@ -105,7 +104,7 @@ abstract class offerYml {
      *
      * @var string
      */
-    protected $delivery = NULL;
+    protected $delivery = '';
 
     /**
      *
@@ -117,19 +116,19 @@ abstract class offerYml {
      *
      * @var string
      */
-    protected $pickup = NULL;
+    protected $pickup = '';
 
     /**
      *
      * @var string
      */
-    protected $available = NULL;
+    protected $available = '';
 
     /**
      *
      * @var string
      */
-    protected $store = NULL;
+    protected $store = '';
 
     /**
      *
@@ -141,43 +140,43 @@ abstract class offerYml {
      *
      * @var string
      */
-    protected $description = NULL;
+    protected $description = '';
 
     /**
      *
      * @var string
      */
-    protected $salesNote = NULL;
+    protected $salesNote = '';
 
     /**
      *
      * @var string
      */
-    protected $minQuantity = NULL;
+    protected $minQuantity = '';
 
     /**
      *
      * @var string
      */
-    protected $stepQuantity = NULL;
+    protected $stepQuantity = '';
 
     /**
      *
      * @var string
      */
-    protected $manufacturerWarranty = NULL;
+    protected $manufacturerWarranty = '';
 
     /**
      *
      * @var string
      */
-    protected $countryOfOrigin = NULL;
+    protected $countryOfOrigin = '';
 
     /**
      *
      * @var type
      */
-    protected $adult = NULL;
+    protected $adult = '';
 
     /**
      *
@@ -201,19 +200,19 @@ abstract class offerYml {
      *
      * @var string
      */
-    protected $weight = NULL;
+    protected $weight = '';
 
     /**
      *
      * @var string
      */
-    protected $dimensions = NULL;
+    protected $dimensions = '';
 
     /**
      *
      * @var string
      */
-    protected $downloadable = NULL;
+    protected $downloadable = '';
 
     /**
      *
@@ -359,13 +358,13 @@ abstract class offerYml {
         if (is_array($cost)) {
             foreach ($cost as $value) {
                 $arr = [];
-                if (!empty($value[0]) && is_numeric($value[0]) && !empty($value[1]) && is_numeric($value[1])) {
+                if (!empty($value[0]) && is_numeric($value[0]) && isset($value[1]) && is_numeric($value[1])) {
                     $arr['cost'] = $value[0];
                     $arr['days'] = $value[1];
                 } else {
                     throw new Exception('Required fields are undefined');
                 }
-                if (!empty($value[2])) {
+                if (isset($value[2])) {
                     $arr['before'] = $value[2];
                 }
                 array_push($this->deliveryOptions, $arr);
@@ -435,15 +434,15 @@ abstract class offerYml {
         if (is_array($id)) {
             foreach ($id as $value) {
                 $arr = [];
-                if (!empty($value[0])) {
+                if (isset($value[0])) {
                     $arr['id'] = $value[0];
                 } else {
                     throw new Exception('Required fields are undefined');
                 }
-                if (!empty($value[1]) && is_numeric($value[1]) && stripos($value[1], '.') === FALSE) {
+                if (isset($value[1]) && is_numeric($value[1]) && stripos($value[1], '.') === FALSE) {
                     $arr['instock'] = $value[1];
                 }
-                if (!empty($value[2]) && ($value[2] == 'true' || $value[2] == 'false')) {
+                if (isset($value[2]) && ($value[2] == 'true' || $value[2] == 'false')) {
                     $arr['booking'] = $value[2];
                 }
                 array_push($this->outlets, $arr);
@@ -451,10 +450,10 @@ abstract class offerYml {
         } else {
             $arr = [];
             $arr['id'] = $id;
-            if (!empty($instock) && is_numeric($instock) && stripos($instock, '.') === FALSE) {
+            if (isset($instock) && is_numeric($instock) && stripos($instock, '.') === FALSE) {
                 $arr['instock'] = $instock;
             }
-            if (!empty($booking && ($booking == 'true' || $booking == 'false'))) {
+            if (isset($booking) && ($booking == 'true' || $booking == 'false')) {
                 $arr['booking'] = $booking;
             }            
             array_push($this->outlets, $arr);
@@ -556,7 +555,7 @@ abstract class offerYml {
     
     /**
      * 
-     * @param string || array $param
+     * @param string || array $param (['parameter', 'name', 'unit'])
      * @param string $name
      * @param string $unit
      * @throws Exception
@@ -565,13 +564,13 @@ abstract class offerYml {
         if (is_array($param)) {
             foreach ($param as $value) {
                 $arr = [];
-                if (!empty($value[0]) && !empty($value[1])) {
+                if (isset($value[0]) && isset($value[1])) {
                     $arr['title'] = $value[0];
                     $arr['name'] = $value[1];
                 } else {
                     throw new Exception('Required fields are undefined');
                 }
-                if (!empty($value[2])) {
+                if (isset($value[2])) {
                     $arr['unit'] = $value[2];
                 }
                 array_push($this->param, $arr);
@@ -579,12 +578,12 @@ abstract class offerYml {
         } else {
             $arr = [];
             $arr['title'] = $param;
-            if (!empty($name)) {
+            if (isset($name)) {
                 $arr['name'] = $name;
             } else {
                 throw new Exception('Required fields are undefined');
             }
-            if (!empty($unit)) {
+            if (isset($unit)) {
                 $arr['unit'] = $unit;
             }
             array_push($this->param, $arr);
@@ -644,10 +643,56 @@ abstract class offerYml {
         }
         $this->rec = trim(implode(',', $rec));
     }
-
     
-//    public function hello() {
-//        echo 'hello';
-//    }
-
+    /**
+     * Set property values that are not arrays
+     * NOTE! for setting array properties, such as $picture, $deliveryOptions, 
+     * $outlets, $barcode, $param, $rec your must use their own methods
+     * 
+     * @param array $values
+     */
+    public function setAllValues($values) {
+        foreach ($values as $key => $value) {
+            if (isset($this->$key) && !is_array($value)) {
+                $this->$key = $value;
+            }
+        }
+            
+    }
+    
+    public function getOffer() {
+        $offer = [];
+        $offer['requared']['name'] = $this->name;
+        $offer['requared']['id'] = $this->id;
+        $offer['requared']['type'] = $this->type;
+        $offer['requared']['url'] = $this->url;
+        $offer['requared']['price'] = $this->price;
+        $offer['requared']['currencyId'] = $this->currencyId;
+        $offer['requared']['categoryId'] = $this->categoryId;
+        $offer['requared']['picture'] = $this->picture;
+        $offer['optional']['cbid'] = $this->cbid;
+        $offer['optional']['bid'] = $this->bid;
+        $offer['optional']['fee'] = $this->fee;
+        $offer['optional']['oldprice'] = $this->oldPrice;
+        $offer['optional']['delivery'] = $this->delivery;
+        $offer['optional']['delivery-options'] = $this->deliveryOptions;
+        $offer['optional']['available'] = $this->available;
+        $offer['optional']['store'] = $this->store;
+        $offer['optional']['outlets'] = $this->store;
+        $offer['optional']['description'] = $this->description;
+        $offer['optional']['sales_notes'] = $this->salesNote;
+        $offer['optional']['min-quantity'] = $this->minQuantity;
+        $offer['optional']['step-quantity'] = $this->stepQuantity;
+        $offer['optional']['manufacturer_warranty'] = $this->manufacturerWarranty;
+        $offer['optional']['country_of_origin'] = $this->countryOfOrigin;
+        $offer['optional']['adult'] = $this->adult;
+        $offer['optional']['barcode'] = $this->barcode;
+        $offer['optional']['cpa'] = $this->cpa;
+        $offer['optional']['param'] = $this->param;
+        $offer['optional']['weight'] = $this->weight;
+        $offer['optional']['dimensions'] = $this->dimensions;
+        $offer['optional']['downloadable'] = $this->downloadable;
+        $offer['optional']['rec'] = $this->rec;
+        return $offer;
+    }
 }

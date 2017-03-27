@@ -10,29 +10,29 @@ class offerBookAudioYml extends offerBookAllYml {
      *
      * @var string 
      */
-    private $performedBy = NULL;
+    private $performedBy = '';
     /**
      *
      * @var string 
      */
-    private $performanceType = NULL;
+    private $performanceType = '';
     
     /**
      *
      * @var string 
      */
-    private $storage = NULL;
+    private $storage = '';
     
     /**
      *
      * @var string
      */
-    private $format = NULL;
+    private $format = '';
     /**
      *
      * @var string 
      */
-    private $recordingLength = NULL;
+    private $recordingLength = '';
     
     public function __construct() {
         $this->type = 'audiobook';
@@ -77,4 +77,20 @@ class offerBookAudioYml extends offerBookAllYml {
     public function setRecordingLength($length) {
         $this->recordingLength = $length;
     }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function getOffer() {
+        $offer = parent::getOffer();        
+        $offer['optional']['performed_by'] = $this->performedBy;
+        $offer['optional']['performance_type'] = $this->performanceType;
+        $offer['optional']['storage'] = $this->storage;
+        $offer['optional']['format'] = $this->format;
+        $offer['optional']['recording_length'] = $this->recordingLength;        
+        return $offer;        
+    }
 }
+$c = new offerBookAudioYml();
+print_r($c->getOffer());

@@ -11,49 +11,49 @@ class offerMediaYml extends offerYml {
      *
      * @var string 
      */
-    private $artist = NULL;
+    private $artist = '';
 
     /**
      *
      * @var string 
      */
-    private $title = NULL;
+    private $title = '';
     
     /**
      *
      * @var string 
      */
-    private $year = NULL;
+    private $year = '';
     
     /**
      *
      * @var media
      */
-    private $media = NULL;
+    private $media = '';
 
     /**
      *
      * @var string 
      */
-    private $starring = NULL;
+    private $starring = '';
     
     /**
      *
      * @var string 
      */
-    private $director = NULL;
+    private $director = '';
     
     /**
      *
      * @var string 
      */
-    private $originalName = NULL;
+    private $originalName = '';
     
     /**
      *
      * @var string
      */
-    private $country = NULL;
+    private $country = '';
     
     public function __construct() {
         $this->type = 'artist.title';
@@ -121,5 +121,20 @@ class offerMediaYml extends offerYml {
      */
     public function setCountry($country) {
         $this->country = $country;
+    }
+    
+    public function getOffer() {
+        $offer = parent::getOffer();
+        unset($offer['requared']['name']);
+        unset($offer['requared']['rec']);
+        $offer['requared']['title'] = $this->title;
+        $offer['optional']['artist'] = $this->artist;
+        $offer['optional']['year'] = $this->year;
+        $offer['optional']['media'] = $this->media;
+        $offer['optional']['starring'] = $this->starring;
+        $offer['optional']['director'] = $this->director;
+        $offer['optional']['originalName'] = $this->originalName;
+        $offer['optional']['country'] = $this->country;
+        return $offer;
     }
 }

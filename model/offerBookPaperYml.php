@@ -10,12 +10,12 @@ class offerBookPaperYml extends offerBookAllYml {
      *
      * @var string 
      */
-    protected $binding = NULL;
+    protected $binding = '';
     /**
      *
      * @var string 
      */
-    protected $pageExtent = NULL;
+    protected $pageExtent = '';
 
     public function __construct() {
         $this->type = 'book';
@@ -34,5 +34,15 @@ class offerBookPaperYml extends offerBookAllYml {
      */
     public function setPageExtent($page) {
         $this->pageExtent = $page;
+    }
+    
+    /**
+     * 
+     */
+    public function getOffer() {
+        $offer = parent::getOffer();
+        $offer['optional']['binding'] = $this->binding;
+        $offer['optional']['page_extent'] = $this->pageExtent;
+        return $offer;
     }
 }

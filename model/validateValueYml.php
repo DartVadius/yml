@@ -146,7 +146,6 @@ class validateValueYml {
         foreach ($categories as $category) {
             if (!empty($category['id']) &&
                     is_numeric($category['id']) &&
-                    $category['id'] !== 0 &&
                     strlen($category['id']) < 19 &&
                     stripos($category['id'], '.') === FALSE) {
                 array_push($id, $category['id']);
@@ -181,14 +180,10 @@ class validateValueYml {
             if (!is_numeric($option['cost']) || stripos($option['cost'], '.') !== FALSE) {
                 return FALSE;
             }
-            if (empty($option['days'])) {
+            if (!isset($option['days'])) {
                 return FALSE;
             }
         }
         return TRUE;
     }
-
-//    public function valid() {
-//        var_dump($this->categoryIdValidate($this->categoryId));
-//    }
 }

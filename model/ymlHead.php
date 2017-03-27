@@ -21,43 +21,43 @@ class ymlHead {
      * short company name
      * @var string
      */
-    private $name = NULL;
+    private $name = '';
 
     /**
      * full company name
      * @var string
      */
-    private $company = NULL;
+    private $company = '';
 
     /**
      * url to the shop main page
      * @var string
      */
-    private $url = NULL;
+    private $url = '';
 
     /**
      * CMS name
      * @var string
      */
-    private $platform = NULL;
+    private $platform = '';
 
     /**
      * CMS version
      * @var string
      */
-    private $version = NULL;
+    private $version = '';
 
     /**
      * The name of the agency that provides technical support to the store
      * @var string
      */
-    private $agency = NULL;
+    private $agency = '';
 
     /**
      * email of CRM developers or technical support agency
      * @var string
      */
-    private $email = NULL;
+    private $email = '';
 
     /**
      * List of currencies used in the store
@@ -281,24 +281,38 @@ class ymlHead {
             return FALSE;
         }
     }
+    
+    /**
+     * Set property values that are not arrays
+     * NOTE! for setting array properties your must use their own methods
+     * 
+     * @param array $values
+     */
+    public function setAllValues($values) {
+        foreach ($values as $key => $value) {
+            if (isset($this->$key) && !is_array($value)) {
+                $this->$key = $value;
+            }
+        }
+            
+    }
+    
+    public function getHead() {
+        $head = [];
+        $head['requared']['encode'] = $this->encode;
+        $head['requared']['name'] = $this->name;
+        $head['requared']['company'] = $this->company;
+        $head['requared']['url'] = $this->url;
+        $head['requared']['currencies'] = $this->currencies;
+        $head['requared']['categories'] = $this->categories;
+        $head['optional']['platform'] = $this->platform;
+        $head['optional']['version'] = $this->version;
+        $head['optional']['agency'] = $this->agency;
+        $head['optional']['email'] = $this->email;
+        $head['optional']['delivery-options'] = $this->deliveryOptions;
+        $head['optional']['cpa'] = $this->cpa;
+        $head['optional']['adult'] = $this->adult;
+        return $head;
+    }
 
 }
-
-$s = new ymlHead();
-$s->setCurrencies('USD', '22.5');
-$g = [
-    ['name', 1, 3],
-    ['name2', 3],
-    ['name3', 4, 3],
-];
-$cost = [
-    [500, '2-4', '15'],
-    [750, 7],
-    [800, 5],
-    ['1000', 25, '7']
-];
-$s->setDeliveryOptions($cost);
-$s->setCategory($g);
-
-print_r($s);
-//$s->valid();

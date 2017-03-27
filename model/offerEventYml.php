@@ -1,5 +1,5 @@
 <?php
-require_once 'offerYml.php';
+
 /**
  * offerEventYml
  *
@@ -11,37 +11,37 @@ class offerEventYml extends offerYml {
      *
      * @var string 
      */
-    private $place = NULL;
+    private $place = '';
 
     /**
      *
      * @var string 
      */
-    private $hall = NULL;
+    private $hall = '';
     
     /**
      *
      * @var string 
      */
-    private $hallPart = NULL;
+    private $hallPart = '';
     
     /**
      *
      * @var date 
      */
-    private $date = NULL;
+    private $date = '';
     
     /**
      *
      * @var string 
      */
-    private $isPremiere = NULL;
+    private $isPremiere = '';
     
     /**
      *
      * @var stirng
      */
-    private $isKids = NULL;
+    private $isKids = '';
 
     public function __construct() {
         $this->type = 'event-ticket';
@@ -102,5 +102,17 @@ class offerEventYml extends offerYml {
         } else {
             throw new Exception('Uncorrect value');
         }
+    }
+    
+    public function getOffer() {
+        $offer = parent::getOffer();
+        $offer['requared']['place'] = $this->place;
+        $offer['requared']['date'] = $this->date;
+        $offer['optional']['hall'] = $this->hall;
+        $offer['optional']['hall_part'] = $this->hallPart;
+        $offer['optional']['is_premiere'] = $this->isPremiere;
+        $offer['optional']['is_kids'] = $this->isKids;
+        unset($offer['optional']['rec']);
+        return $offer;
     }
 }
