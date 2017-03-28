@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * yml header
  *

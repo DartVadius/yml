@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * offerEventYml
  *
@@ -112,7 +112,25 @@ class offerEventYml extends offerYml {
         $offer['optional']['hall_part'] = $this->hallPart;
         $offer['optional']['is_premiere'] = $this->isPremiere;
         $offer['optional']['is_kids'] = $this->isKids;
+        unset($offer['optional']['model']);
+        unset($offer['optional']['vendor']);
+        unset($offer['optional']['vendorCode']);
         unset($offer['optional']['rec']);
         return $offer;
+    }
+    
+    /**
+     * Set property values that are not arrays
+     * NOTE! for setting array properties, such as $picture, $deliveryOptions, 
+     * $outlets, $barcode, $param, $rec your must use their own methods
+     * 
+     * @param array $values
+     */
+    public function setAllValues($values) {
+        foreach ($values as $key => $value) {
+            if (isset($this->$key) && !is_array($value)) {
+                $this->$key = $value;
+            }
+        }            
     }
 }

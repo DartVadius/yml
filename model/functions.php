@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * functions
  *
@@ -7,7 +7,7 @@
  */
 class functions {
 
-    public static function prepare_field($s) {
+    public static function prepareField($s) {
         $from = array('"', '&', '>', '<', '\'');
         $to = array('&quot;', '&amp;', '&gt;', '&lt;', '&apos;');
         $s = str_replace($from, $to, $s);        

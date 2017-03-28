@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * offerTourYml
  *
@@ -200,6 +200,9 @@ class offerTourYml extends offerYml {
     public function getOffer() {
         $offer = parent::getOffer();
         unset($offer['optional']['rec']);
+        unset($offer['optional']['model']);
+        unset($offer['optional']['vendor']);
+        unset($offer['optional']['vendorCode']);
         $offer['requared']['days'] = $this->days;
         $offer['requared']['included'] = $this->included;
         $offer['requared']['transport'] = $this->transport;
@@ -214,5 +217,20 @@ class offerTourYml extends offerYml {
         $offer['optional']['price_max'] = $this->priceMax;
         $offer['optional']['options'] = $this->options;
         return $offer;
+    }
+    
+    /**
+     * Set property values that are not arrays
+     * NOTE! for setting array properties, such as $picture, $deliveryOptions, 
+     * $outlets, $barcode, $param, $rec your must use their own methods
+     * 
+     * @param array $values
+     */
+    public function setAllValues($values) {
+        foreach ($values as $key => $value) {
+            if (isset($this->$key) && !is_array($value)) {
+                $this->$key = $value;
+            }
+        }            
     }
 }

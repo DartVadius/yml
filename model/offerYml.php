@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 
 /**
  * offerYml
@@ -218,7 +218,7 @@ abstract class offerYml {
      *
      * @var array
      */
-    protected $rec = [];
+    protected $rec = '';
 
     /**
      *
@@ -326,7 +326,7 @@ abstract class offerYml {
 
     /**
      *
-     * @param string $arr
+     * @param array $arr array with url's to pictures of product
      */
     public function setPicture($arr) {
         foreach ($arr as $pic) {
@@ -358,7 +358,7 @@ abstract class offerYml {
         if (is_array($cost)) {
             foreach ($cost as $value) {
                 $arr = [];
-                if (!empty($value[0]) && is_numeric($value[0]) && isset($value[1]) && is_numeric($value[1])) {
+                if (!empty($value[0]) && is_numeric($value[0]) && isset($value[1])) {
                     $arr['cost'] = $value[0];
                     $arr['days'] = $value[1];
                 } else {
@@ -533,7 +533,7 @@ abstract class offerYml {
     public function setBarcode($code) {
         if (is_array($code)) {
             foreach ($code as $val) {
-                array_push($this->barcode, $code);
+                array_push($this->barcode, $val);
             }
         } else {
             array_push($this->barcode, $code);
@@ -656,8 +656,7 @@ abstract class offerYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }
-            
+        }            
     }
     
     public function getOffer() {
@@ -669,16 +668,19 @@ abstract class offerYml {
         $offer['requared']['price'] = $this->price;
         $offer['requared']['currencyId'] = $this->currencyId;
         $offer['requared']['categoryId'] = $this->categoryId;
-        $offer['requared']['picture'] = $this->picture;
+        $offer['requared']['picture'] = $this->picture; //array
+        $offer['optional']['model'] = $this->model;
+        $offer['optional']['vendor'] = $this->vendor;
+        $offer['optional']['vendorCode'] = $this->vendorCode;
         $offer['optional']['cbid'] = $this->cbid;
         $offer['optional']['bid'] = $this->bid;
         $offer['optional']['fee'] = $this->fee;
         $offer['optional']['oldprice'] = $this->oldPrice;
         $offer['optional']['delivery'] = $this->delivery;
-        $offer['optional']['delivery-options'] = $this->deliveryOptions;
+        $offer['optional']['delivery-options'] = $this->deliveryOptions; //array
         $offer['optional']['available'] = $this->available;
         $offer['optional']['store'] = $this->store;
-        $offer['optional']['outlets'] = $this->store;
+        $offer['optional']['outlets'] = $this->outlets; //array
         $offer['optional']['description'] = $this->description;
         $offer['optional']['sales_notes'] = $this->salesNote;
         $offer['optional']['min-quantity'] = $this->minQuantity;
@@ -686,9 +688,9 @@ abstract class offerYml {
         $offer['optional']['manufacturer_warranty'] = $this->manufacturerWarranty;
         $offer['optional']['country_of_origin'] = $this->countryOfOrigin;
         $offer['optional']['adult'] = $this->adult;
-        $offer['optional']['barcode'] = $this->barcode;
+        $offer['optional']['barcode'] = $this->barcode; //arary
         $offer['optional']['cpa'] = $this->cpa;
-        $offer['optional']['param'] = $this->param;
+        $offer['optional']['param'] = $this->param; //array
         $offer['optional']['weight'] = $this->weight;
         $offer['optional']['dimensions'] = $this->dimensions;
         $offer['optional']['downloadable'] = $this->downloadable;

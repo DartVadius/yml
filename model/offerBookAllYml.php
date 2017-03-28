@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * offerBookAllYml
  *
@@ -128,6 +128,9 @@ abstract class offerBookAllYml extends offerYml {
         $offer['optional']['part'] = $this->part;
         $offer['optional']['language'] = $this->language;
         $offer['optional']['table_of_contents'] = $this->tableOfContents;
+        unset($offer['optional']['model']);
+        unset($offer['optional']['vendor']);
+        unset($offer['optional']['vendorCode']);
         unset($offer['optional']['rec']);
         return $offer;
     }

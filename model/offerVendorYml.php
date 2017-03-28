@@ -1,49 +1,30 @@
 <?php
 namespace DartVadius\YmlGenerator\model;
 /**
- * offerBookPaperYml
+ * offerVendorYml
  *
  * @author DartVadius
  */
-class offerBookPaperYml extends offerBookAllYml {
-    /**
-     *
-     * @var string 
-     */
-    protected $binding = '';
-    /**
-     *
-     * @var string 
-     */
-    protected $pageExtent = '';
+class offerVendorYml extends offerYml {
+    
+    private $typePrefix = '';
 
     public function __construct() {
-        $this->type = 'book';
+        $this->type = 'vendor.model';
     }
     
-    /**
-     * 
-     * @param string $bind
-     */
-    public function setBinding($bind) {
-        $this->binding = $bind;
-    }
-    /**
-     * 
-     * @param string $page
-     */
-    public function setPageExtent($page) {
-        $this->pageExtent = $page;
-    }
-    
-    /**
-     * 
-     */
     public function getOffer() {
         $offer = parent::getOffer();
-        $offer['optional']['binding'] = $this->binding;
-        $offer['optional']['page_extent'] = $this->pageExtent;
+        unset($offer['requared']['name']);
+        $offer['requared']['model'] = $offer['optional']['model'];
+        $offer['requared']['vendor'] = $offer['optional']['vendor'];
+        unset($offer['optional']['model']);
+        unset($offer['optional']['vendor']);
         return $offer;
+    }
+    
+    public function setTypePrefix($prefix) {
+        $this->typePrefix = $prefix;
     }
     
     /**

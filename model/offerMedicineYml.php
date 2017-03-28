@@ -1,5 +1,5 @@
 <?php
-
+namespace DartVadius\YmlGenerator\model;
 /**
  * Description of offerMedicineYml
  *
@@ -49,16 +49,28 @@ class offerMedicineYml extends offerYml {
         $offer = parent::getOffer();        
         unset($offer['optional']['fee']);
         unset($offer['optional']['delivery-options']);
-        unset($offer['optional']['available']);
         unset($offer['optional']['min-quantity']);
         unset($offer['optional']['step-quantity']);
         unset($offer['optional']['manufacturer_warranty']);
         unset($offer['optional']['adult']);
         unset($offer['optional']['downloadable']);
         unset($offer['optional']['rec']);
+        unset($offer['optional']['model']);        
         return $offer;
     }
+    
+    /**
+     * Set property values that are not arrays
+     * NOTE! for setting array properties, such as $picture, $deliveryOptions, 
+     * $outlets, $barcode, $param, $rec your must use their own methods
+     * 
+     * @param array $values
+     */
+    public function setAllValues($values) {
+        foreach ($values as $key => $value) {
+            if (isset($this->$key) && !is_array($value)) {
+                $this->$key = $value;
+            }
+        }            
+    }
 }
-
-$c = new offerMedicineYml();
-print_r($c->getOffer());
