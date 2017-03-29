@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * Description of offerMedicineYml
  *
  * @author DartVadius
  */
-class offerMedicineYml extends offerYml {    
+class medicineYmlOffer extends abstractYmlOffer {    
     public function __construct() {
         $this->type = 'medicine';
         $this->pickup = 'true';
@@ -71,6 +74,7 @@ class offerMedicineYml extends offerYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
 }

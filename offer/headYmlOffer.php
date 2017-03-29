@@ -1,11 +1,12 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+
 /**
  * yml header
  *
  * @author DartVadius
  */
-class ymlHead {
+class headYmlOffer {
 
     /**
      * params loaded from config file
@@ -93,26 +94,32 @@ class ymlHead {
         if (file_exists(__DIR__ . '/config/config.php')) {
             $this->params = require_once (__DIR__ . '/config/config.php');
             foreach ($this->params['required'] as $key => $value) {
-                if (is_array($value)) {
-                    $newArr = [];
-                    foreach ($value as $arrKey => $arrValue) {
-                        $newArr[$arrKey] = $arrValue;
+                if (!empty($value)) {
+                    if (is_array($value)) {
+                        $newArr = [];
+                        foreach ($value as $arrKey => $arrValue) {
+                            $newArr[$arrKey] = $arrValue;
+                        }
+                        $this->$key = $newArr;
+                    } else {
+                        $this->$key = $value;
                     }
-                    $this->$key = $newArr;
-                } else {
-                    $this->$key = $value;
                 }
+                
             }
             foreach ($this->params['optional'] as $key => $value) {
-                if (is_array($value)) {
-                    $newArr = [];
-                    foreach ($value as $arrKey => $arrValue) {
-                        $newArr[$arrKey] = $arrValue;
+                if (!empty($value)) {
+                    if (is_array($value)) {
+                        $newArr = [];
+                        foreach ($value as $arrKey => $arrValue) {
+                            $newArr[$arrKey] = $arrValue;
+                        }
+                        $this->$key = $newArr;
+                    } else {
+                        $this->$key = $value;
                     }
-                    $this->$key = $newArr;
-                } else {
-                    $this->$key = $value;
                 }
+                
             }
         }
     }
@@ -123,6 +130,7 @@ class ymlHead {
      */
     public function setName($name) {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -131,6 +139,7 @@ class ymlHead {
      */
     public function setCompany($company) {
         $this->company = $company;
+        return $this;
     }
 
     /**
@@ -139,6 +148,7 @@ class ymlHead {
      */
     public function setUrl($url) {
         $this->url = $url;
+        return $this;
     }
 
     /**
@@ -147,6 +157,7 @@ class ymlHead {
      */
     public function setPlatform($platform) {
         $this->platform = $platform;
+        return $this;
     }
 
     /**
@@ -155,6 +166,7 @@ class ymlHead {
      */
     public function setVersion($version) {
         $this->version = $version;
+        return $this;
     }
 
     /**
@@ -163,6 +175,7 @@ class ymlHead {
      */
     public function setAgency($agency) {
         $this->agency = $agency;
+        return $this;
     }
 
     /**
@@ -172,6 +185,7 @@ class ymlHead {
      */
     public function setEmail($email) {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -181,6 +195,7 @@ class ymlHead {
      */
     public function setCurrencies($name, $value) {
         $this->currencies[$name] = $value;
+        return $this;
     }
 
     /**
@@ -203,7 +218,7 @@ class ymlHead {
                 if (!empty($value[1]) && !empty($value[0])) {
                     $this->categories[$value[0]]['id'] = $value[1];
                 } else {
-                    throw new Exception('Required fields are undefined');
+                    throw new Exception('Category: Required fields are undefined');
                 }
                 if (!empty($value[2])) {
                     $this->categories[$value[0]]['parentId'] = $value[2];
@@ -217,6 +232,7 @@ class ymlHead {
             }
             $this->categories[$name]['parentId'] = $parentId;
         }
+        return $this;
     }
 
     /**
@@ -254,6 +270,7 @@ class ymlHead {
             }
             array_push($this->deliveryOptions, $arr);
         }
+        return $this;
     }
 
     /**
@@ -264,9 +281,8 @@ class ymlHead {
     public function setCPA($val) {
         if ($val == 1 || $val == 0) {
             $this->cpa = $val;
-        } else {
-            throw new Exception('Uncorrect value');
         }
+        return $this;
     }
 
     /**
@@ -277,9 +293,8 @@ class ymlHead {
     public function setAdult($value) {
         if ($value == 'false' || $value == 'true') {
             $this->adult = $value;
-        } else {
-            return FALSE;
         }
+        return $this;
     }
     
     /**
@@ -294,7 +309,7 @@ class ymlHead {
                 $this->$key = $value;
             }
         }
-            
+        return $this;            
     }
     
     public function getHead() {

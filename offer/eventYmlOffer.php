@@ -1,42 +1,45 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * offerEventYml
  *
  * @author DartVadius
  */
-class offerEventYml extends offerYml {
-    
+class eventYmlOffer extends abstractYmlOffer {
+
     /**
      *
-     * @var string 
+     * @var string
      */
     private $place = '';
 
     /**
      *
-     * @var string 
+     * @var string
      */
     private $hall = '';
-    
+
     /**
      *
-     * @var string 
+     * @var string
      */
     private $hallPart = '';
-    
+
     /**
      *
-     * @var date 
+     * @var date
      */
     private $date = '';
-    
+
     /**
      *
-     * @var string 
+     * @var string
      */
     private $isPremiere = '';
-    
+
     /**
      *
      * @var stirng
@@ -46,64 +49,65 @@ class offerEventYml extends offerYml {
     public function __construct() {
         $this->type = 'event-ticket';
     }
-    
+
     /**
-     * 
+     *
      * @param string $place
      */
     public function setPlace($place) {
         $this->place = $place;
+        return $this;
     }
-    
+
     /**
-     * 
+     *
      * @param string $hall
      */
     public function setHall($hall) {
         $this->hall = $hall;
+        return $this;
     }
-    
+
     /**
-     * 
+     *
      * @param string $part
      */
     public function setHallPart($part) {
         $this->hallPart = $part;
+        return $this;
     }
-    
+
     /**
-     * 
+     *
      * @param DateTime $date
      */
-    public function setDate ($date) {
+    public function setDate($date) {
         $date = new DateTime($date);
         $this->date = $date->format('Y-m-d h:m:s');
     }
-    
+
     /**
-     * 
+     *
      * @param string $val
      */
     public function setIsPremiere($val) {
         if ($val === 0 || $val === 1) {
             $this->isPremiere = $val;
-        } else {
-            throw new Exception('Uncorrect value');
-        }        
+        }
+        return $this;
     }
-    
+
     /**
-     * 
+     *
      * @param int $val
      */
     public function setIsKids($val) {
         if ($val === 0 || $val === 1) {
             $this->isKids = $val;
-        } else {
-            throw new Exception('Uncorrect value');
         }
+        return $this;
     }
-    
+
     public function getOffer() {
         $offer = parent::getOffer();
         $offer['requared']['place'] = $this->place;
@@ -118,12 +122,12 @@ class offerEventYml extends offerYml {
         unset($offer['optional']['rec']);
         return $offer;
     }
-    
+
     /**
      * Set property values that are not arrays
-     * NOTE! for setting array properties, such as $picture, $deliveryOptions, 
+     * NOTE! for setting array properties, such as $picture, $deliveryOptions,
      * $outlets, $barcode, $param, $rec your must use their own methods
-     * 
+     *
      * @param array $values
      */
     public function setAllValues($values) {
@@ -131,6 +135,8 @@ class offerEventYml extends offerYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
+
 }

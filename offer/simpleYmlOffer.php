@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * offerSimpleYml
  *
  * @author DartVadius
  */
-class offerSimpleYml extends offerYml {
+class simpleYmlOffer extends abstractYmlOffer {
     public function getOffer() {
         $offer = parent::getOffer();
         unset($offer['requared']['type']);

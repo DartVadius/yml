@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * offerBookAllYml
  *
  * @author DartVadius
  */
-abstract class offerBookAllYml extends offerYml {
+abstract class bookAllYmlOffer extends abstractYmlOffer {
     /**
      *
      * @var string 
@@ -58,6 +61,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setAuthor($author) {
         $this->author = $author;
+        return $this;
     }
     /**
      * 
@@ -65,6 +69,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setPublisher($publisher) {
         $this->publisher = $publisher;
+        return $this;
     }
     /**
      * 
@@ -72,6 +77,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setSeries($series) {
         $this->series = $series;
+        return $this;
     }
     /**
      * 
@@ -79,6 +85,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setYear($year) {
         $this->year = $year;
+        return $this;
     }
 
     /**
@@ -87,6 +94,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setIsbn($isbn) {
         $this->isbn = $isbn;
+        return $this;
     }
     /**
      * 
@@ -94,6 +102,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setVolume($volume) {
         $this->volume = $volume;
+        return $this;
     }
     /**
      * 
@@ -101,6 +110,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setPart($part) {
         $this->part = $part;
+        return $this;
     }
     /**
      * 
@@ -108,6 +118,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setLanguage($lang) {
         $this->language = $lang;
+        return $this;
     }
     /**
      * 
@@ -115,6 +126,7 @@ abstract class offerBookAllYml extends offerYml {
      */
     public function setTableOfContents($table) {
         $this->tableOfContents = $table;
+        return $this;
     }
     public function getOffer() {
         $offer = parent::getOffer();

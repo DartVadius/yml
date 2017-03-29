@@ -1,12 +1,12 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
 
 /**
  * offerYml
  *
  * @author DartVadius
  */
-abstract class offerYml {
+abstract class abstractYmlOffer {
 
     /**
      *
@@ -226,6 +226,7 @@ abstract class offerYml {
      */
     public function setName($name) {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -234,6 +235,7 @@ abstract class offerYml {
      */
     public function setModel($model) {
         $this->model = $model;
+        return $this;
     }
 
     /**
@@ -242,6 +244,7 @@ abstract class offerYml {
      */
     public function setVendor($vendor) {
         $this->vendor = $vendor;
+        return $this;
     }
 
     /**
@@ -250,6 +253,7 @@ abstract class offerYml {
      */
     public function setVendorCode($vendorCode) {
         $this->vendorCode = $vendorCode;
+        return $this;
     }
 
     /**
@@ -258,6 +262,7 @@ abstract class offerYml {
      */
     public function setId($id) {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -266,6 +271,7 @@ abstract class offerYml {
      */
     public function setBid($bid) {
         $this->bid = $bid;
+        return $this;
     }
 
     /**
@@ -274,6 +280,7 @@ abstract class offerYml {
      */
     public function setCbid($cbid) {
         $this->cbid = $cbid;
+        return $this;
     }
 
     /**
@@ -282,6 +289,7 @@ abstract class offerYml {
      */
     public function setFee($fee) {
         $this->fee = $fee;
+        return $this;
     }
 
     /**
@@ -290,6 +298,7 @@ abstract class offerYml {
      */
     public function setUrl($url) {
         $this->url = $url;
+        return $this;
     }
 
     /**
@@ -298,6 +307,7 @@ abstract class offerYml {
      */
     public function setPrice($price) {
         $this->price = $price;
+        return $this;
     }
 
     /**
@@ -306,6 +316,7 @@ abstract class offerYml {
      */
     public function setOldPrice($oldPrice) {
         $this->oldPrice = $oldPrice;
+        return $this;
     }
 
     /**
@@ -314,6 +325,7 @@ abstract class offerYml {
      */
     public function setCurrencyId($currencyId) {
         $this->currencyId = $currencyId;
+        return $this;
     }
 
     /**
@@ -322,6 +334,7 @@ abstract class offerYml {
      */
     public function setCategoryId($id) {
         $this->categoryId = $id;
+        return $this;
     }
 
     /**
@@ -332,6 +345,7 @@ abstract class offerYml {
         foreach ($arr as $pic) {
             array_push($this->picture, $pic);
         }
+        return $this;
     }
 
     /**
@@ -342,9 +356,8 @@ abstract class offerYml {
     public function setDelivery($val) {
         if ($val == 'true' || $val == 'false') {
             $this->delivery = $val;
-        } else {
-            return FALSE;
-        }
+        } 
+        return $this;
     }
 
     /**
@@ -382,6 +395,7 @@ abstract class offerYml {
             }
             array_push($this->deliveryOptions, $arr);
         }
+        return $this;
     }
 
     /**
@@ -392,9 +406,8 @@ abstract class offerYml {
     public function setPickup($val) {
         if ($val == 'true' || $val == 'false') {
             $this->pickup = $val;
-        } else {
-            return FALSE;
         }
+        return $this;
     }
 
     /**
@@ -405,9 +418,8 @@ abstract class offerYml {
     public function setAvailable($val) {
         if ($val == 'true' || $val == 'false') {
             $this->available = $val;
-        } else {
-            return FALSE;
-        }
+        } 
+        return $this;
     }
 
     /**
@@ -418,9 +430,8 @@ abstract class offerYml {
     public function setStore($val) {
         if ($val == 'true' || $val == 'false') {
             $this->store = $val;
-        } else {
-            return FALSE;
         }
+        return $this;
     }
 
     /**
@@ -458,6 +469,7 @@ abstract class offerYml {
             }            
             array_push($this->outlets, $arr);
         }
+        return $this;
     }
 
     /**
@@ -466,6 +478,7 @@ abstract class offerYml {
      */
     public function setDescription($desc) {
         $this->description = $desc;
+        return $this;
     }
 
     /**
@@ -474,6 +487,7 @@ abstract class offerYml {
      */
     public function salesNote($desc) {
         $this->salesNote = $desc;
+        return $this;
     }
 
     /**
@@ -482,6 +496,7 @@ abstract class offerYml {
      */
     public function setMinQuantity($num) {
         $this->minQuantity = $num;
+        return $this;
     }
 
     /**
@@ -490,6 +505,7 @@ abstract class offerYml {
      */
     public function setStepQuantity($num) {
         $this->stepQuantity = $num;
+        return $this;
     }
 
     /**
@@ -500,9 +516,8 @@ abstract class offerYml {
     public function setManufacturerWarranty($value) {
         if ($val == 'true' || $val == 'false') {
             $this->manufacturerWarranty = $val;
-        } else {
-            return FALSE;
         }
+        return $this;
     }
 
     /**
@@ -511,6 +526,7 @@ abstract class offerYml {
      */
     public function setCountryOfOrigin($country) {
         $this->countryOfOrigin = $country;
+        return $this;
     }
 
     /**
@@ -521,9 +537,8 @@ abstract class offerYml {
     public function setAdult($value) {
         if ($val == 'true') {
             $this->adult = $val;
-        } else {
-            return FALSE;
         }
+        return $this;
     }
 
     /**
@@ -538,6 +553,7 @@ abstract class offerYml {
         } else {
             array_push($this->barcode, $code);
         }
+        return $this;
     }
 
     /**
@@ -548,9 +564,8 @@ abstract class offerYml {
     public function setCPA($val) {
         if ($val === 1 || $val === 0) {
             $this->cpa = $val;
-        } else {
-            throw new Exception('Uncorrect value');
         }
+        return $this;
     }
     
     /**
@@ -588,6 +603,7 @@ abstract class offerYml {
             }
             array_push($this->param, $arr);
         }
+        return $this;
     }
     
     /**
@@ -598,7 +614,7 @@ abstract class offerYml {
         if (is_numeric($kg)) {
             $this->weight = $kg;
         }
-        return FALSE;
+        return $this;
     }
 
     /**
@@ -607,14 +623,15 @@ abstract class offerYml {
      */
     public function setDimensions($dim) {
         if (count($dim) != 3) {
-            throw new Exception('Wrong number of vallues');
+            throw new Exception('Wrong number of values');
         }
         foreach ($dim as $value) {
             if (!is_numeric($value)) {
-                throw new Exception('Wrong type of vallue');
+                throw new Exception('Wrong type of value');
             }
         }
         $this->dimensions = trim(implode('/', $dim));
+        return $this;
     }
     
     /**
@@ -624,6 +641,7 @@ abstract class offerYml {
     public function setDownloadable($value) {
         if ($value == 'true') {
             $this->downloadable = $value;
+            return $this;
         }
     }
 
@@ -638,10 +656,11 @@ abstract class offerYml {
         }
         foreach ($rec as $value) {
             if (!ctype_alnum($value)) {
-                throw new Exception('Wrong vallue');
+                throw new Exception('Wrong value');
             }
         }
         $this->rec = trim(implode(',', $rec));
+        return $this;
     }
     
     /**
@@ -656,7 +675,8 @@ abstract class offerYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
     
     public function getOffer() {

@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\bookAllYmlOffer;
+
 /**
  * offerBookAudioYml
  *
  * @author DartVadius
  */
-class offerBookAudioYml extends offerBookAllYml {
+class bookAudioYmlOffer extends bookAllYmlOffer {
     /**
      *
      * @var string 
@@ -44,6 +47,7 @@ class offerBookAudioYml extends offerBookAllYml {
      */
     public function setPerformedBy($perf) {
         $this->performedBy = $perf;
+        return $this;
     }
     
     /**
@@ -52,6 +56,7 @@ class offerBookAudioYml extends offerBookAllYml {
      */
     public function setPerformanceType($perfType) {
         $this->performanceType = $perfType;
+        return $this;
     }
     
     /**
@@ -60,6 +65,7 @@ class offerBookAudioYml extends offerBookAllYml {
      */
     public function setStorage($storage) {
         $this->storage = $storage;
+        return $this;
     }
     
     /**
@@ -68,6 +74,7 @@ class offerBookAudioYml extends offerBookAllYml {
      */
     public function setFormat($format) {
         $this->format =$format;
+        return $this;
     }
     
     /**
@@ -76,6 +83,7 @@ class offerBookAudioYml extends offerBookAllYml {
      */
     public function setRecordingLength($length) {
         $this->recordingLength = $length;
+        return $this;
     }
     
     /**
@@ -104,8 +112,7 @@ class offerBookAudioYml extends offerBookAllYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
 }
-$c = new offerBookAudioYml();
-print_r($c->getOffer());

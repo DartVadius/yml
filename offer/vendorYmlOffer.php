@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * offerVendorYml
  *
  * @author DartVadius
  */
-class offerVendorYml extends offerYml {
+class vendorYmlOffer extends abstractYmlOffer {
     
     private $typePrefix = '';
 
@@ -25,6 +28,7 @@ class offerVendorYml extends offerYml {
     
     public function setTypePrefix($prefix) {
         $this->typePrefix = $prefix;
+        return $this;
     }
     
     /**
@@ -39,6 +43,7 @@ class offerVendorYml extends offerYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
 }

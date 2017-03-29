@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\abstractYmlOffer;
+
 /**
  * offerMediaYml
  *
  * @author DartVadius
  */
-class offerMediaYml extends offerYml {
+class mediaYmlOffer extends abstractYmlOffer {
 
     /**
      *
@@ -65,6 +68,7 @@ class offerMediaYml extends offerYml {
      */
     public function setArtist($artist) {
         $this->artist = $artist;
+        return $this;
     }
 
     /**
@@ -73,6 +77,7 @@ class offerMediaYml extends offerYml {
      */
     public function setName($title) {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -81,6 +86,7 @@ class offerMediaYml extends offerYml {
      */
     public function setYear($year) {
         $this->year = $year;
+        return $this;
     }
 
     /**
@@ -89,6 +95,7 @@ class offerMediaYml extends offerYml {
      */
     public function setMedia($media) {
         $this->media = $media;
+        return $this;
     }
 
     /**
@@ -97,6 +104,7 @@ class offerMediaYml extends offerYml {
      */
     public function setStarring($starring) {
         $this->starring = $starring;
+        return $this;
     }
 
     /**
@@ -105,6 +113,7 @@ class offerMediaYml extends offerYml {
      */
     public function setDirector($director) {
         $this->director = $director;
+        return $this;
     }
 
     /**
@@ -113,6 +122,7 @@ class offerMediaYml extends offerYml {
      */
     public function setOriginalName($origin) {
         $this->originalName = $origin;
+        return $this;
     }
 
     /**
@@ -121,6 +131,7 @@ class offerMediaYml extends offerYml {
      */
     public function setCountry($country) {
         $this->country = $country;
+        return $this;
     }
 
     /**
@@ -139,6 +150,7 @@ class offerMediaYml extends offerYml {
         if (!empty($this->name)) {
             $this->title = $this->name;
         }
+        return $this;
     }
 
     public function getOffer() {
@@ -160,14 +172,3 @@ class offerMediaYml extends offerYml {
     }
 
 }
-//
-//$c = new offerMediaYml();
-//$val = [
-//    'url' => 'asddfasdf',
-//    'title' => 'name',
-//    'artist' => 'elvis'
-//];
-////$c->setArtist('elvis');
-//$c->setAllValues($val);
-//print_r($c);
-//print_r($c->getOffer());

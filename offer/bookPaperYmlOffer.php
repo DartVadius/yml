@@ -1,11 +1,14 @@
 <?php
-namespace DartVadius\YmlGenerator\model;
+//namespace DartVadius\YmlGenerator;
+//
+//use DartVadius\YmlGenerator\bookAllYmlOffer;
+
 /**
  * offerBookPaperYml
  *
  * @author DartVadius
  */
-class offerBookPaperYml extends offerBookAllYml {
+class bookPaperYmlOffer extends bookAllYmlOffer {
     /**
      *
      * @var string 
@@ -27,6 +30,7 @@ class offerBookPaperYml extends offerBookAllYml {
      */
     public function setBinding($bind) {
         $this->binding = $bind;
+        return $this;
     }
     /**
      * 
@@ -34,6 +38,7 @@ class offerBookPaperYml extends offerBookAllYml {
      */
     public function setPageExtent($page) {
         $this->pageExtent = $page;
+        return $this;
     }
     
     /**
@@ -58,6 +63,7 @@ class offerBookPaperYml extends offerBookAllYml {
             if (isset($this->$key) && !is_array($value)) {
                 $this->$key = $value;
             }
-        }            
+        }
+        return $this;
     }
 }
