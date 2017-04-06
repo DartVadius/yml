@@ -5,7 +5,7 @@
  *
  * @author DartVadius
  */
-class functionsYmlOffer {
+class yml_functionsYmlOffer {
 
     public static function prepareField($s) {
         $from = array('"', '&', '>', '<', '\'');

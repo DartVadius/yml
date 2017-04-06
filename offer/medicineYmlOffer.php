@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class medicineYmlOffer extends abstractYmlOffer {    
+class yml_medicineYmlOffer extends yml_abstractYmlOffer {    
     public function __construct() {
         $this->type = 'medicine';
         $this->pickup = 'true';

@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class bookPaperYmlOffer extends bookAllYmlOffer {
+class yml_bookPaperYmlOffer extends yml_bookAllYmlOffer {
     /**
      *
      * @var string 
@@ -48,6 +48,11 @@ class bookPaperYmlOffer extends bookAllYmlOffer {
         $offer = parent::getOffer();
         $offer['optional']['binding'] = $this->binding;
         $offer['optional']['page_extent'] = $this->pageExtent;
+        foreach ($offer['requared'] as $req) {
+            if ($req == '') {
+                return FALSE;
+            }
+        }
         return $offer;
     }
     

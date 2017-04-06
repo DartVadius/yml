@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class eventYmlOffer extends abstractYmlOffer {
+class yml_eventYmlOffer extends yml_abstractYmlOffer {
 
     /**
      *

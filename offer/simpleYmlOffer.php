@@ -8,9 +8,10 @@
  *
  * @author DartVadius
  */
-class simpleYmlOffer extends abstractYmlOffer {
+class yml_simpleYmlOffer extends yml_abstractYmlOffer {
+    
     public function getOffer() {
-        $offer = parent::getOffer();
+        $offer = parent::getOffer();        
         unset($offer['requared']['type']);
         return $offer;
     }

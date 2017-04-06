@@ -5,7 +5,7 @@
  *
  * @author DartVadius
  */
-class validateValueYmlOffer {
+class yml_validateValueYmlOffer {
     /**
      * validate id in offer
      *

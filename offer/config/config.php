@@ -8,7 +8,7 @@ return [
         'url' => 'url to store main page',
         'currencies' => [
             'UAH' => '1', //set base currencie
-            'RUR' => 'CBRF'
+            //'RUR' => 'CBRF' //you can add more currencies here
         ],        
     ],
     'optional' => [

@@ -9,7 +9,7 @@
  *
  * @author DartVadius
  */
-class tourYmlOffer extends abstractYmlOffer {
+class yml_tourYmlOffer extends yml_abstractYmlOffer {
 
     /**
      *

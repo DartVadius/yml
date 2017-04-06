@@ -6,7 +6,7 @@
  *
  * @author DartVadius
  */
-class headYmlOffer {
+class yml_headYmlOffer {
 
     /**
      * params loaded from config file
@@ -90,39 +90,39 @@ class headYmlOffer {
      */
     private $adult = NULL;
 
-    public function __construct() {
-        if (file_exists(__DIR__ . '/config/config.php')) {
-            $this->params = require_once (__DIR__ . '/config/config.php');
-            foreach ($this->params['required'] as $key => $value) {
-                if (!empty($value)) {
-                    if (is_array($value)) {
-                        $newArr = [];
-                        foreach ($value as $arrKey => $arrValue) {
-                            $newArr[$arrKey] = $arrValue;
-                        }
-                        $this->$key = $newArr;
-                    } else {
-                        $this->$key = $value;
-                    }
-                }
-                
-            }
-            foreach ($this->params['optional'] as $key => $value) {
-                if (!empty($value)) {
-                    if (is_array($value)) {
-                        $newArr = [];
-                        foreach ($value as $arrKey => $arrValue) {
-                            $newArr[$arrKey] = $arrValue;
-                        }
-                        $this->$key = $newArr;
-                    } else {
-                        $this->$key = $value;
-                    }
-                }
-                
-            }
-        }
-    }
+//    public function __construct() {
+//        if (file_exists(__DIR__ . '/config/config.php')) {
+//            $this->params = require_once (__DIR__ . '/config/config.php');
+//            foreach ($this->params['required'] as $key => $value) {
+//                if (!empty($value)) {
+//                    if (is_array($value)) {
+//                        $newArr = [];
+//                        foreach ($value as $arrKey => $arrValue) {
+//                            $newArr[$arrKey] = $arrValue;
+//                        }
+//                        $this->$key = $newArr;
+//                    } else {
+//                        $this->$key = $value;
+//                    }
+//                }
+//                
+//            }
+//            foreach ($this->params['optional'] as $key => $value) {
+//                if (!empty($value)) {
+//                    if (is_array($value)) {
+//                        $newArr = [];
+//                        foreach ($value as $arrKey => $arrValue) {
+//                            $newArr[$arrKey] = $arrValue;
+//                        }
+//                        $this->$key = $newArr;
+//                    } else {
+//                        $this->$key = $value;
+//                    }
+//                }
+//                
+//            }
+//        }
+//    }
 
     /**
      *

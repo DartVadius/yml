@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class vendorYmlOffer extends abstractYmlOffer {
+class yml_vendorYmlOffer extends yml_abstractYmlOffer {
     
     private $typePrefix = '';
 

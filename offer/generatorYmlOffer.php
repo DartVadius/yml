@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class generatorYmlOffer {
+class yml_generatorYmlOffer {
 
     private $writer;
 
@@ -37,11 +37,11 @@ class generatorYmlOffer {
         $this->writer->writeAttribute('date', date('Y-m-d H:i'));
         $this->writer->startElement('shop');
         $this->writer->startElement('name');
-        $headRequared['name'] = functionsYmlOffer::prepareField($headRequared['name']);
+        $headRequared['name'] = yml_functionsYmlOffer::prepareField($headRequared['name']);
         $this->writer->text($headRequared['name']);
         $this->writer->endElement();
         $this->writer->startElement('company');
-        $headRequared['company'] = functionsYmlOffer::prepareField($headRequared['company']);
+        $headRequared['company'] = yml_functionsYmlOffer::prepareField($headRequared['company']);
         $this->writer->text($headRequared['company']);
         $this->writer->endElement();
         $this->writer->startElement('url');
@@ -49,19 +49,19 @@ class generatorYmlOffer {
         $this->writer->endElement();
         if (!empty($headOptional['platform'])) {
             $this->writer->startElement('platform');
-            $headOptional['platform'] = functionsYmlOffer::prepareField($headOptional['platform']);
+            $headOptional['platform'] = yml_functionsYmlOffer::prepareField($headOptional['platform']);
             $this->writer->text($headOptional['platform']);
             $this->writer->endElement();
         }
         if (!empty($headOptional['version'])) {
             $this->writer->startElement('version');
-            $headOptional['version'] = functionsYmlOffer::prepareField($headOptional['version']);
+            $headOptional['version'] = yml_functionsYmlOffer::prepareField($headOptional['version']);
             $this->writer->text($headOptional['version']);
             $this->writer->endElement();
         }
         if (!empty($headOptional['agency'])) {
             $this->writer->startElement('agency');
-            $headOptional['agency'] = functionsYmlOffer::prepareField($headOptional['agency']);
+            $headOptional['agency'] = yml_functionsYmlOffer::prepareField($headOptional['agency']);
             $this->writer->text($headOptional['agency']);
             $this->writer->endElement();
         }
@@ -89,7 +89,7 @@ class generatorYmlOffer {
             if (!empty($value['parentId'])) {
                 $this->writer->writeAttribute('parentId', $value['parentId']);
             }
-            $newKey = functionsYmlOffer::prepareField($key);
+            $newKey = yml_functionsYmlOffer::prepareField($key);
             $this->writer->text($newKey);
             $this->writer->endElement();
         }
@@ -111,7 +111,7 @@ class generatorYmlOffer {
         }
 
 //set cpa        
-        if (!empty($headOptional['cpa'])) {
+        if (isset($headOptional['cpa'])) {
             $this->writer->startElement('cpa');
             $this->writer->text($headOptional['cpa']);
             $this->writer->endElement();
@@ -183,11 +183,11 @@ class generatorYmlOffer {
                 }
             }
             foreach ($offer['optional'] as $tag => $value) {
-                if (!is_array($value) && $value !== '') {
+                if (!is_array($value) && $value != '') {
                     $this->writer->startElement($tag);
-                    $text = functionsYmlOffer::prepareField($value);
+                    $text = yml_functionsYmlOffer::prepareField($value);
                     $this->writer->text($text);
-                    $this->writer->endElement();
+                    $this->writer->fullEndElement();
                     if ($tag == 'delivery' && $value != 'false') {
                         $this->writer->startElement('delivery-options');
                         foreach ($offer['optional']['delivery-options'] as $option) {
@@ -204,6 +204,9 @@ class generatorYmlOffer {
                     }
                 }
             }
+            
+            
+            
             if (!empty($offer['optional']['outlets'])) {
                 $this->writer->startElement('outlets');
                 foreach ($offer['optional']['outlets'] as $outlet) {

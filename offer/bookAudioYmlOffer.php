@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class bookAudioYmlOffer extends bookAllYmlOffer {
+class yml_bookAudioYmlOffer extends yml_bookAllYmlOffer {
     /**
      *
      * @var string 

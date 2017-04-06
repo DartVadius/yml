@@ -6,7 +6,7 @@
  *
  * @author DartVadius
  */
-abstract class abstractYmlOffer {
+abstract class yml_abstractYmlOffer {
 
     /**
      *
@@ -170,7 +170,7 @@ abstract class abstractYmlOffer {
      *
      * @var string
      */
-    protected $countryOfOrigin = '';
+    protected $country_of_origin = '';
 
     /**
      *
@@ -188,7 +188,7 @@ abstract class abstractYmlOffer {
      * Participation of commodity offers in the program "Ordering on the Market"
      * @var integer (0, 1)
      */
-    protected $cpa = 1;
+    protected $cpa = '';
 
     /**
      *
@@ -220,6 +220,7 @@ abstract class abstractYmlOffer {
      */
     protected $rec = '';
 
+    
     /**
      *
      * @param string $name
@@ -343,7 +344,7 @@ abstract class abstractYmlOffer {
      */
     public function setPicture($arr) {
         foreach ($arr as $pic) {
-            array_push($this->picture, $pic);
+            $this->picture[] = $pic;
         }
         return $this;
     }
@@ -588,7 +589,7 @@ abstract class abstractYmlOffer {
                 if (isset($value[2])) {
                     $arr['unit'] = $value[2];
                 }
-                array_push($this->param, $arr);
+                $this->param[] = $arr;
             }
         } else {
             $arr = [];
@@ -601,7 +602,7 @@ abstract class abstractYmlOffer {
             if (isset($unit)) {
                 $arr['unit'] = $unit;
             }
-            array_push($this->param, $arr);
+            $this->param[] = $arr;
         }
         return $this;
     }
@@ -706,7 +707,7 @@ abstract class abstractYmlOffer {
         $offer['optional']['min-quantity'] = $this->minQuantity;
         $offer['optional']['step-quantity'] = $this->stepQuantity;
         $offer['optional']['manufacturer_warranty'] = $this->manufacturerWarranty;
-        $offer['optional']['country_of_origin'] = $this->countryOfOrigin;
+        $offer['optional']['country_of_origin'] = $this->country_of_origin;
         $offer['optional']['adult'] = $this->adult;
         $offer['optional']['barcode'] = $this->barcode; //arary
         $offer['optional']['cpa'] = $this->cpa;

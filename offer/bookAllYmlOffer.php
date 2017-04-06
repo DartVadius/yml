@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-abstract class bookAllYmlOffer extends abstractYmlOffer {
+abstract class yml_bookAllYmlOffer extends yml_abstractYmlOffer {
     /**
      *
      * @var string 
@@ -33,7 +33,7 @@ abstract class bookAllYmlOffer extends abstractYmlOffer {
      *
      * @var string 
      */
-    protected $isbn = '';
+    protected $ISBN = '';
     /**
      *
      * @var string 
@@ -129,9 +129,8 @@ abstract class bookAllYmlOffer extends abstractYmlOffer {
         return $this;
     }
     public function getOffer() {
-        $offer = parent::getOffer();
-        $offer['requared']['type'] = $this->type;        
-        $offer['requared']['ISBN'] = $this->isbn;
+        $offer = parent::getOffer();        
+        $offer['requared']['ISBN'] = $this->ISBN;
         $offer['optional']['author'] = $this->author;
         $offer['optional']['publisher'] = $this->publisher;
         $offer['optional']['series'] = $this->series;

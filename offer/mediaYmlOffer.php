@@ -8,7 +8,7 @@
  *
  * @author DartVadius
  */
-class mediaYmlOffer extends abstractYmlOffer {
+class yml_mediaYmlOffer extends yml_abstractYmlOffer {
 
     /**
      *
@@ -168,6 +168,11 @@ class mediaYmlOffer extends abstractYmlOffer {
         $offer['optional']['director'] = $this->director;
         $offer['optional']['originalName'] = $this->originalName;
         $offer['optional']['country'] = $this->country;
+        foreach ($offer['requared'] as $req) {
+            if ($req == '') {
+                return FALSE;
+            }
+        }
         return $offer;
     }
 
