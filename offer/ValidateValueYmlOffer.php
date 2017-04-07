@@ -91,6 +91,7 @@ class ValidateValueYmlOffer {
     }
 
     /**
+     * validate shop name in Head
      *
      * @param string $name
      * @return boolean
@@ -106,8 +107,8 @@ class ValidateValueYmlOffer {
     /**
      * validate currency in Head
      *
-     * @param string $id
-     * @param string $value
+     * @param string $id currency ID (RUR, UAH, USD, etc.)
+     * @param string $value value of currency (numeric or NBU, CBRF, etc.)
      * @return boolean
      */
     public static function currencyValidate($id, $value) {

@@ -168,11 +168,6 @@ class MediaYmlOffer extends AbstractYmlOffer {
         $offer['optional']['director'] = $this->director;
         $offer['optional']['originalName'] = $this->originalName;
         $offer['optional']['country'] = $this->country;
-        foreach ($offer['requared'] as $req) {
-            if ($req == '') {
-                return FALSE;
-            }
-        }
         return $offer;
     }
 
