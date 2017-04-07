@@ -1,6 +1,7 @@
 About
 
-generator YML (Yandex Market Language). Uses standard XMLWriter for generating XML file. 
+Generator YML (Yandex Market Language). Uses standard XMLWriter for generating XML file. 
+
 Requirements: PHP 5.5.0 or >= version.
 
 Generator supports this offer types:
