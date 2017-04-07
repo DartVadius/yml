@@ -24,7 +24,7 @@ $head = YmlFactory::getYml('head');
 
 You can setting up header by few ways:
 
-1. Main part of settings you can set by config file (/offer/config/config.php)
+1. Main part of settings you can set by config file (offer/config/config.php)
 
 2. Or using method setAllValues:
 
