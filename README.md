@@ -76,9 +76,9 @@ You can setting up offer by few ways:
     where $values is array ['tag name' => 'value'], for example:
 
     [
-        'name' => 'company name',
-        'url' => 'url to your site main page',
-        'platform' => 'platform name',
+        'name' => 'product name',
+        'price' => 'price',
+        'vendor' => 'vendor name',
         etc....
     ]
 
@@ -90,7 +90,7 @@ use their own methods
 *tags: 'delivery-options', 'outlets', 'barcode', 'picture', 'param', 'dimensions',
         'rec', 'options'
 
-3. Or set parameters one by one:
+2. Or set parameters one by one:
     $simpleOffer->setName($name)
     ->setModel($model)
     ->setVendor($vendor)
