@@ -18,7 +18,9 @@ How to use:
 <?php
 use DartVadius\YmlGenerator\YmlFactory;
 
-Creating header of yml document
+/**
+* Creating header of yml document
+*/
 
 $head = YmlFactory::getYml('head');
 
@@ -53,10 +55,10 @@ use their own methods
     ->setCategory($categories)
     etc...;
 
+/**
+*Creating offer for yml document
+*/
 
-
-
-Creating offer for yml document
 
 $simpleOffer = YmlFactory::getYml('simple');
 $eventOffer = YmlFactory::getYml('event');
@@ -94,8 +96,9 @@ use their own methods
     ->setDeliveryOptions($deliveryOptions)
     etc...;
 
-
-Generating XML
+/**
+* Generating XML
+*/
 
 $generator = YmlFactory::getYml('generator');
 
@@ -118,11 +121,6 @@ You can generate XML (surprise) by few ways
     etc...
     $xml = $generator->generateFooter();
 ```
-
-
-
-
-
 
 
 Full list of supported YML Header Tags:
