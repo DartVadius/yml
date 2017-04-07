@@ -4,14 +4,14 @@ generator YML (Yandex Market Language). Uses standard XMLWriter for generating X
 Requirements: PHP 5.5.0 or >= version.
 
 Generator supports this offer types:
-    - simple (Simplified description of the product offer, no type)
-    - vendor (vendor.model)
-    - bookAudio (audiobook)
-    - bookPaper (book)
-    - event (event-ticket)
-    - media (artist.title)
-    - medicine (medicine)
-    - tour (tour)
+- simple (Simplified description of the product offer, no type)
+- vendor (vendor.model)
+- bookAudio (audiobook)
+- bookPaper (book)
+- vent (event-ticket)
+- media (artist.title)
+- medicine (medicine)
+- tour (tour)
 
 How to use:
 
