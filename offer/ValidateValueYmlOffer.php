@@ -1,11 +1,11 @@
 <?php
-//namespace DartVadius\YmlGenerator;
+namespace DartVadius\YmlGenerator\offer;
 /**
  * validateValueYml
  *
  * @author DartVadius
  */
-class yml_validateValueYmlOffer {
+class ValidateValueYmlOffer {
     /**
      * validate id in offer
      *

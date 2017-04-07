@@ -1,14 +1,14 @@
 <?php
-//namespace DartVadius\YmlGenerator;
-//
-//use DartVadius\YmlGenerator\abstractYmlOffer;
+namespace DartVadius\YmlGenerator\offer;
+
+use DartVadius\YmlGenerator\offer\AbstractYmlOffer;
 
 /**
- * offerMediaYml
+ * MediaYmlOffer media type of YandexMarket offer (artist.title)
  *
  * @author DartVadius
  */
-class yml_mediaYmlOffer extends yml_abstractYmlOffer {
+class MediaYmlOffer extends AbstractYmlOffer {
 
     /**
      *

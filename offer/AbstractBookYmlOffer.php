@@ -1,14 +1,14 @@
 <?php
-//namespace DartVadius\YmlGenerator;
-//
-//use DartVadius\YmlGenerator\abstractYmlOffer;
+namespace DartVadius\YmlGenerator\offer;
+
+use DartVadius\YmlGenerator\offer\AbstractYmlOffer;
 
 /**
  * offerBookAllYml
  *
  * @author DartVadius
  */
-abstract class yml_bookAllYmlOffer extends yml_abstractYmlOffer {
+abstract class AbstractBookYmlOffer extends AbstractYmlOffer {
     /**
      *
      * @var string 

@@ -1,14 +1,14 @@
 <?php
-//namespace DartVadius\YmlGenerator;
-//
-//use DartVadius\YmlGenerator\abstractYmlOffer;
+namespace DartVadius\YmlGenerator\offer;
+
+use DartVadius\YmlGenerator\offer\AbstractYmlOffer;
 
 /**
- * offerVendorYml
+ * VendorYmlOffer
  *
  * @author DartVadius
  */
-class yml_vendorYmlOffer extends yml_abstractYmlOffer {
+class VendorYmlOffer extends AbstractYmlOffer {
     
     private $typePrefix = '';
 

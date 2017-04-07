@@ -1,12 +1,12 @@
 <?php
-//namespace DartVadius\YmlGenerator;
+namespace DartVadius\YmlGenerator\offer;
 
 /**
  * yml header
  *
  * @author DartVadius
  */
-class yml_headYmlOffer {
+class HeadYmlOffer {
 
     /**
      * params loaded from config file
@@ -90,39 +90,39 @@ class yml_headYmlOffer {
      */
     private $adult = NULL;
 
-//    public function __construct() {
-//        if (file_exists(__DIR__ . '/config/config.php')) {
-//            $this->params = require_once (__DIR__ . '/config/config.php');
-//            foreach ($this->params['required'] as $key => $value) {
-//                if (!empty($value)) {
-//                    if (is_array($value)) {
-//                        $newArr = [];
-//                        foreach ($value as $arrKey => $arrValue) {
-//                            $newArr[$arrKey] = $arrValue;
-//                        }
-//                        $this->$key = $newArr;
-//                    } else {
-//                        $this->$key = $value;
-//                    }
-//                }
-//                
-//            }
-//            foreach ($this->params['optional'] as $key => $value) {
-//                if (!empty($value)) {
-//                    if (is_array($value)) {
-//                        $newArr = [];
-//                        foreach ($value as $arrKey => $arrValue) {
-//                            $newArr[$arrKey] = $arrValue;
-//                        }
-//                        $this->$key = $newArr;
-//                    } else {
-//                        $this->$key = $value;
-//                    }
-//                }
-//                
-//            }
-//        }
-//    }
+    public function __construct() {
+        if (file_exists(__DIR__ . '/config/config.php')) {
+            $this->params = require_once (__DIR__ . '/config/config.php');
+            foreach ($this->params['required'] as $key => $value) {
+                if (!empty($value)) {
+                    if (is_array($value)) {
+                        $newArr = [];
+                        foreach ($value as $arrKey => $arrValue) {
+                            $newArr[$arrKey] = $arrValue;
+                        }
+                        $this->$key = $newArr;
+                    } else {
+                        $this->$key = $value;
+                    }
+                }
+                
+            }
+            foreach ($this->params['optional'] as $key => $value) {
+                if (!empty($value)) {
+                    if (is_array($value)) {
+                        $newArr = [];
+                        foreach ($value as $arrKey => $arrValue) {
+                            $newArr[$arrKey] = $arrValue;
+                        }
+                        $this->$key = $newArr;
+                    } else {
+                        $this->$key = $value;
+                    }
+                }
+                
+            }
+        }
+    }
 
     /**
      *
@@ -312,6 +312,11 @@ class yml_headYmlOffer {
         return $this;            
     }
     
+    /**
+     * returns array of header properties prepared for using in yml generator
+     * 
+     * @return array
+     */
     public function getHead() {
         $head = [];
         $head['requared']['encode'] = $this->encode;

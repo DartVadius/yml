@@ -1,12 +1,12 @@
 <?php
-//namespace DartVadius\YmlGenerator;
+namespace DartVadius\YmlGenerator\offer;
 
 /**
  * offerYml
  *
  * @author DartVadius
  */
-abstract class yml_abstractYmlOffer {
+abstract class AbstractYmlOffer {
 
     /**
      *
@@ -549,10 +549,10 @@ abstract class yml_abstractYmlOffer {
     public function setBarcode($code) {
         if (is_array($code)) {
             foreach ($code as $val) {
-                array_push($this->barcode, $val);
+                $this->barcode[] = $code;
             }
         } else {
-            array_push($this->barcode, $code);
+            $this->barcode[] = $code;
         }
         return $this;
     }
@@ -680,42 +680,52 @@ abstract class yml_abstractYmlOffer {
         return $this;
     }
     
+    /**
+     * returns array of offer properties prepared for using in yml generator
+     * 
+     * @return array
+     */
     public function getOffer() {
-        $offer = [];
-        $offer['requared']['name'] = $this->name;
-        $offer['requared']['id'] = $this->id;
-        $offer['requared']['type'] = $this->type;
-        $offer['requared']['url'] = $this->url;
-        $offer['requared']['price'] = $this->price;
-        $offer['requared']['currencyId'] = $this->currencyId;
-        $offer['requared']['categoryId'] = $this->categoryId;
-        $offer['requared']['picture'] = $this->picture; //array
-        $offer['optional']['model'] = $this->model;
-        $offer['optional']['vendor'] = $this->vendor;
-        $offer['optional']['vendorCode'] = $this->vendorCode;
-        $offer['optional']['cbid'] = $this->cbid;
-        $offer['optional']['bid'] = $this->bid;
-        $offer['optional']['fee'] = $this->fee;
-        $offer['optional']['oldprice'] = $this->oldPrice;
-        $offer['optional']['delivery'] = $this->delivery;
-        $offer['optional']['delivery-options'] = $this->deliveryOptions; //array
-        $offer['optional']['available'] = $this->available;
-        $offer['optional']['store'] = $this->store;
-        $offer['optional']['outlets'] = $this->outlets; //array
-        $offer['optional']['description'] = $this->description;
-        $offer['optional']['sales_notes'] = $this->salesNote;
-        $offer['optional']['min-quantity'] = $this->minQuantity;
-        $offer['optional']['step-quantity'] = $this->stepQuantity;
-        $offer['optional']['manufacturer_warranty'] = $this->manufacturerWarranty;
-        $offer['optional']['country_of_origin'] = $this->country_of_origin;
-        $offer['optional']['adult'] = $this->adult;
-        $offer['optional']['barcode'] = $this->barcode; //arary
-        $offer['optional']['cpa'] = $this->cpa;
-        $offer['optional']['param'] = $this->param; //array
-        $offer['optional']['weight'] = $this->weight;
-        $offer['optional']['dimensions'] = $this->dimensions;
-        $offer['optional']['downloadable'] = $this->downloadable;
-        $offer['optional']['rec'] = $this->rec;
-        return $offer;
+        
+        return [
+            'requared' => [
+                'name' => $this->name,
+                'id' => $this->id,
+                'type' => $this->type,
+                'url' => $this->url,
+                'price' => $this->price,
+                'currencyId' => $this->currencyId,
+                'categoryId' => $this->categoryId,
+                'picture' => $this->picture, //array
+            ],
+            'optional' => [
+                'model' => $this->model,
+                'vendor' => $this->vendor,
+                'vendorCode' => $this->vendorCode,
+                'cbid' => $this->cbid,
+                'bid' => $this->bid,
+                'fee' => $this->fee,
+                'oldprice' => $this->oldPrice,
+                'delivery' => $this->delivery,
+                'delivery-options' => $this->deliveryOptions, //array
+                'available' => $this->available,
+                'store' => $this->store,
+                'outlets' => $this->outlets, //array
+                'description' => $this->description,
+                'sales_notes' => $this->salesNote,
+                'min-quantity' => $this->minQuantity,
+                'step-quantity' => $this->stepQuantity,
+                'manufacturer_warranty' => $this->manufacturerWarranty,
+                'country_of_origin' => $this->country_of_origin,
+                'adult' => $this->adult,
+                'barcode' => $this->barcode, //arary
+                'cpa' => $this->cpa,
+                'param' => $this->param, //array
+                'weight' => $this->weight,
+                'dimensions' => $this->dimensions,
+                'downloadable' => $this->downloadable,
+                'rec' => $this->rec,
+            ],
+        ];
     }
 }

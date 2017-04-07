@@ -1,14 +1,14 @@
 <?php
-//namespace DartVadius\YmlGenerator;
-//
-//use DartVadius\YmlGenerator\abstractYmlOffer;
+namespace DartVadius\YmlGenerator\offer;
+
+use DartVadius\YmlGenerator\offer\AbstractYmlOffer;
 
 /**
  * offerSimpleYml
  *
  * @author DartVadius
  */
-class yml_simpleYmlOffer extends yml_abstractYmlOffer {
+class SimpleYmlOffer extends AbstractYmlOffer {
     
     public function getOffer() {
         $offer = parent::getOffer();        

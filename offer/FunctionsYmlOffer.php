@@ -1,11 +1,11 @@
 <?php
-//namespace DartVadius\YmlGenerator;
+namespace DartVadius\YmlGenerator\offer;
 /**
  * functions
  *
  * @author DartVadius
  */
-class yml_functionsYmlOffer {
+class FunctionsYmlOffer {
 
     public static function prepareField($s) {
         $from = array('"', '&', '>', '<', '\'');
