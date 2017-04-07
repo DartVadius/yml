@@ -14,6 +14,7 @@ Generator supports this offer types:
 - tour (tour)
 
 How to use:
+```php
 <?php
 use DartVadius\YmlGenerator\YmlFactory;
 
@@ -116,7 +117,7 @@ You can generate XML (surprise) by few ways
     $generator->generateOffer($audioBook->getOffer());
     etc...
     $xml = $generator->generateFooter();
-
+```
 
 
 
