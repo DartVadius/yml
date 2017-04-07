@@ -18,19 +18,19 @@ How to use:
 <?php
 use DartVadius\YmlGenerator\YmlFactory;
 
-//Creating header of yml document
+Creating header of yml document
 
 $head = YmlFactory::getYml('head');
 
-//You can setting up header by few ways:
+You can setting up header by few ways:
 
-//1. Main part of settings you can set by config file (/offer/config/config.php)
+1. Main part of settings you can set by config file (/offer/config/config.php)
 
-//2. Or using method setAllValues:
+2. Or using method setAllValues:
 
     $head->setAllValues($values);
 
-// where $values is array ['tag name' => 'value'], for example:
+where $values is array ['tag name' => 'value'], for example:
 
     [
         'name' => 'company name',
@@ -39,12 +39,12 @@ $head = YmlFactory::getYml('head');
         etc....
     ]
 
-//    Full list of tags see below
+Full list of tags see below
 
-//Warning! This method has limitations. To set tags* that represent a list of values, 
-//use their own methods
+Warning! This method has limitations. To set tags* that represent a list of values, 
+use their own methods
 
-//*Tags: 'currencies', 'categories', 'delivery-options'
+*Tags: 'currencies', 'categories', 'delivery-options'
 
 3. Or set parameters one by one:
     $head->setName($name)
@@ -127,181 +127,95 @@ You can generate XML (surprise) by few ways
 
 Full list of supported YML Header Tags:
 
-    name
-    
-    company
-    
-    url
-    
-    currencies
-    
-    categories
-    
-    platform
-    
-    version
-    
-    agency
-    
-    email
-    
-    delivery-options
-    
-    cpa
-    
-    adult
+- name
+- company
+- url
+- currencies
+- categories
+- platform
+- version
+- agency
+- email
+- delivery-options
+- cpa
+- adult
 
 
 Full list of supported YML Offer Tags
 
-    name
-    
-    id
-    
-    type
-    
-    url
-    
-    price
-    
-    currencyId
-    
-    categoryId
-    
-    picture
-    
-    model
-    
-    vendor
-    
-    vendorCode
-    
-    cbid
-    
-    bid
-    
-    fee
-    
-    oldprice
-    
-    delivery
-    
-    delivery-options
-    
-    available
-    
-    store
-    
-    outlets
-    
-    description
-    
-    sales_notes
-    
-    min-quantity
-    
-    step-quantity
-    
-    manufacturer_warranty
-    
-    country_of_origin
-    
-    adult
-    
-    barcode
-    
-    cpa
-    
-    param
-    
-    weight
-    
-    dimensions
-    
-    downloadable
-    
-    rec
-    
-    ISBN
-    
-    author
-    
-    publisher
-    
-    series
-    
-    year
-    
-    volume
-    
-    part
-    
-    language
-    
-    table_of_contents
-    
-    performed_by
-    
-    performance_type
-    
-    storage
-    
-    format
-    
-    recording_length
-    
-    binding
-    
-    page_extent
-    
-    place
-    
-    date
-    
-    hall
-    
-    hall_part
-    
-    is_premiere
-    
-    is_kids
-    
-    title
-    
-    artist
-    
-    media
-    
-    starring
-    
-    director
-    
-    originalName
-    
-    country
-    
-    days
-    
-    included
-    
-    transport
-    
-    worldRegion
-    
-    country
-    
-    region
-    
-    dataTour
-    
-    hotel_stars
-    
-    room
-    
-    meal
-    
-    price_min
-    
-    price_max
-    
-    options
+- name
+- id
+- type
+- url
+- price
+- currencyId
+- categoryId
+- picture
+- model
+- vendor
+- vendorCode
+- cbid
+- bid
+- fee
+- oldprice
+- delivery
+- delivery-options
+- available
+- store
+- outlets
+- description
+- sales_notes
+- min-quantity
+- step-quantity
+- manufacturer_warranty
+- country_of_origin
+- adult
+- barcode
+- cpa
+- param
+- weight
+- dimensions
+- downloadable
+- rec
+- ISBN
+- author
+- publisher
+- series
+- year
+- volume
+- part
+- language
+- table_of_contents
+- performed_by
+- performance_type
+- storage
+- format
+- recording_length
+- binding
+- page_extent
+- place
+- date
+- hall
+- hall_part
+- is_premiere
+- is_kids
+- title
+- artist
+- media
+- starring
+- director
+- originalName
+- country
+- days
+- included
+- transport
+- worldRegion
+- country
+- region
+- dataTour
+- hotel_stars
+- room
+- meal
+- price_min
+- price_max
+- options
