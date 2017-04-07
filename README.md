@@ -20,7 +20,7 @@ How to use:
 use DartVadius\YmlGenerator\YmlFactory;
 
 /**
-* Creating header of yml document
+* Creating header for yml document
 */
 
 $head = YmlFactory::getYml('head');
