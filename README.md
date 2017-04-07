@@ -14,22 +14,22 @@ Generator supports this offer types:
 - tour (tour)
 
 How to use:
-
+<?php
 use DartVadius\YmlGenerator\YmlFactory;
 
-Creating header of yml document
+//Creating header of yml document
 
 $head = YmlFactory::getYml('head');
 
-You can setting up header by few ways:
+//You can setting up header by few ways:
 
-1. Main part of settings you can set by config file (/offer/config/config.php)
+//1. Main part of settings you can set by config file (/offer/config/config.php)
 
-2. Or using method setAllValues:
+//2. Or using method setAllValues:
 
     $head->setAllValues($values);
 
-    where $values is array ['tag name' => 'value'], for example:
+// where $values is array ['tag name' => 'value'], for example:
 
     [
         'name' => 'company name',
@@ -38,12 +38,12 @@ You can setting up header by few ways:
         etc....
     ]
 
-    Full list of tags see below
+//    Full list of tags see below
 
-Warning! This method has limitations. To set tags* that represent a list of values, 
-use their own methods
+//Warning! This method has limitations. To set tags* that represent a list of values, 
+//use their own methods
 
-*Tags: 'currencies', 'categories', 'delivery-options'
+//*Tags: 'currencies', 'categories', 'delivery-options'
 
 3. Or set parameters one by one:
     $head->setName($name)
