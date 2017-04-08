@@ -1,0 +1,23 @@
+{
+    "name": "DartVadius/YmlGenerator",
+    "description": "generator YML for YandexMarket",
+    "version": "0.2",
+    "keywords": [
+        "yml", "generator", "YandexMarket"
+    ],
+    "homepage": "https://github.com/DartVadius/yml",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DartVadius",
+            "email": "vad261275@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.0"
+    },
+    "autoload": {
+        "classmap": ["src"]
+    },
+}
