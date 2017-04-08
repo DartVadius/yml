@@ -2,7 +2,7 @@
     "name": "dartvadius/ymlgenerator",
     "description": "generator YML (YandexMarket language)",
     "type": "library",
-    "version": "0.2",
+    "version": "1.0",
     "keywords": [
         "yml", "generator", "YandexMarket"
     ],
@@ -15,7 +15,7 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "require": {
         "php" : ">=5.5.0"
     },
