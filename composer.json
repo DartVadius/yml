@@ -1,12 +1,13 @@
 {
-    "name": "DartVadius/yml",
-    "description": "generator YML for YandexMarket",
+    "name": "dartvadius/ymlgenerator",
+    "description": "generator YML (YandexMarket language)",
+    "type": "library",
     "version": "0.2",
     "keywords": [
         "yml", "generator", "YandexMarket"
     ],
     "homepage": "https://github.com/DartVadius/yml",
-    "license": "MIT",
+    "license": "mit",
     "authors": [
         {
             "name": "DartVadius",
@@ -14,10 +15,11 @@
             "role": "Developer"
         }
     ],
+    "minimum-stability": "beta",
     "require": {
         "php" : ">=5.5.0"
     },
     "autoload": {
         "classmap": ["src"]
-    },
+    }
 }
