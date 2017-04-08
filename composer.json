@@ -13,8 +13,7 @@
             "email": "vad261275@gmail.com",
             "role": "Developer"
         }
-    ],
-    "minimum-stability": "stable",
+    ],    
     "require": {
         "php" : ">=5.4.0"
     },
