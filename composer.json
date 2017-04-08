@@ -2,7 +2,7 @@
     "name": "dartvadius/ymlgenerator",
     "description": "generator YML (YandexMarket language)",
     "type": "library",
-    "version": "1.0",
+    "version": "0.2",
     "keywords": [
         "yml", "generator", "YandexMarket"
     ],
@@ -21,5 +21,10 @@
     },
     "autoload": {
         "classmap": ["src"]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
     }
 }
