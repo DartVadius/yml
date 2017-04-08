@@ -2,6 +2,7 @@
     "name": "dartvadius/ymlgenerator",
     "description": "generator YML (YandexMarket language)",
     "type": "library",
+    "version": "0.2",
     "keywords": [
         "yml", "generator", "YandexMarket"
     ],
@@ -13,7 +14,8 @@
             "email": "vad261275@gmail.com",
             "role": "Developer"
         }
-    ],    
+    ],
+    "minimum-stability": "dev",
     "require": {
         "php" : ">=5.4.0"
     },
@@ -25,7 +27,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "0.2-dev"
         }
     }
 }
