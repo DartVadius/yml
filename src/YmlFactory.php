@@ -2,17 +2,7 @@
 
 namespace DartVadius\YmlGenerator;
 
-use DartVadius\YmlGenerator\offer\BookAudioYmlOffer;
-use DartVadius\YmlGenerator\offer\BookPaperYmlOffer;
-use DartVadius\YmlGenerator\offer\EventYmlOffer;
-use DartVadius\YmlGenerator\GeneratorYmlOffer;
-use DartVadius\YmlGenerator\offer\HeadYmlOffer;
-use DartVadius\YmlGenerator\offer\MediaYmlOffer;
-use DartVadius\YmlGenerator\offer\MedicineYmlOffer;
-use DartVadius\YmlGenerator\offer\SimpleYmlOffer;
-use DartVadius\YmlGenerator\offer\TourYmlOffer;
-use DartVadius\YmlGenerator\ValidatorYmlOffer;
-use DartVadius\YmlGenerator\offer\VendorYmlOffer;
+use DartVadius\YmlGenerator\offer;
 
 /**
  * YmlFactory
@@ -23,23 +13,23 @@ class YmlFactory {
     public static function getYml($name) {
         switch (strtolower($name)) {
             case 'head':                
-                return new HeadYmlOffer();
+                return new offer\HeadYmlOffer();
             case 'bookaudio':
-                return new BookAudioYmlOffer();
+                return new offer\BookAudioYmlOffer();
             case 'bookpaper':
-                return new BookPaperYmlOffer();
+                return new offer\BookPaperYmlOffer();
             case 'event':
-                return new EventYmlOffer();
+                return new offer\EventYmlOffer();
             case 'media':
-                return new MediaYmlOffer();
+                return new offer\MediaYmlOffer();
             case 'medicine':
-                return new MedicineYmlOffer();
+                return new offer\MedicineYmlOffer();
             case 'simple':
-                return new SimpleYmlOffer();
+                return new offer\SimpleYmlOffer();
             case 'tour':
-                return new TourYmlOffer();
+                return new offer\TourYmlOffer();
             case 'vendor':
-                return new VendorYmlOffer();    
+                return new offer\VendorYmlOffer();    
             default :
                 return FALSE;
         }
