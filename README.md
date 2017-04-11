@@ -9,20 +9,21 @@ Generator supports this offer types:
 - vendor (vendor.model)
 - bookAudio (audiobook)
 - bookPaper (book)
-- vent (event-ticket)
+- event (event-ticket)
 - media (artist.title)
 - medicine (medicine)
 - tour (tour)
+
+You can create suitable type of offer using this names, see examples below.
 
 How to use:
 ```php
 <?php
 use DartVadius\YmlGenerator\YmlFactory;
+```
 
-/**
-* Creating header for yml document
-*/
-
+I. Creating header for yml document
+```php
 $head = YmlFactory::getYml('head');
 ```
 You can setting up header by few ways:
@@ -56,12 +57,11 @@ use their own methods
     ->setEmail($email)
     ->setCategory($categories)
     etc...;
+```
 
-/**
-*Creating offer for yml document
-*/
+II. Creating offers for yml document
 
-
+```php
 $simpleOffer = YmlFactory::getYml('simple');
 $eventOffer = YmlFactory::getYml('event');
 $audioBook = YmlFactory::getYml('bookAudio');
@@ -72,9 +72,9 @@ etc...
 You can setting up offer by few ways:
 
 1. Using method setAllValues:
-
+```php
     $simpleOffer->setAllValues($values);
-
+```
     where $values is array ['tag name' => 'value'], for example:
 ```php    
     [
@@ -86,10 +86,10 @@ You can setting up offer by few ways:
 ```
 Full list of tags see below
 
-Warning! This method has limitations. To set tags* that represent a list of values, 
+Warning! This method has limitations. To set *tags that represent a list of values, 
 use their own methods
 
-*tags: 'delivery-options', 'outlets', 'barcode', 'picture', 'param', 'dimensions',
+*tags:  'delivery-options', 'outlets', 'barcode', 'picture', 'param', 'dimensions', 
         'rec', 'options'
 
 2. Or set parameters one by one:
@@ -99,16 +99,16 @@ use their own methods
     ->setVendor($vendor)
     ->setDeliveryOptions($deliveryOptions)
     etc...;
+```
 
-/**
-* Generating XML
-*/
+III. Generating XML
 
+```php
 $generator = YmlFactory::getYml('generator');
 ```
 You can generate XML (surprise) by few ways
 
-1.  
+1. By using array of values
 ```php
 $xml = $generator->generate($head->getHead(), $offers);
 ```    
@@ -121,7 +121,7 @@ $xml = $generator->generate($head->getHead(), $offers);
         etc...
     ]
 ```
-2.  
+2. Setting up offers one by one
 ```php
     $generator->generateHead($head->getHead());
     $generator->generateOffer($simpleOffer->getOffer());
