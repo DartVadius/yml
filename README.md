@@ -9,39 +9,40 @@ Generator supports this offer types:
 - vendor (vendor.model)
 - bookAudio (audiobook)
 - bookPaper (book)
-- vent (event-ticket)
+- event (event-ticket)
 - media (artist.title)
 - medicine (medicine)
 - tour (tour)
+
+You can create suitable type of offer using this names, see examples below.
 
 How to use:
 ```php
 <?php
 use DartVadius\YmlGenerator\YmlFactory;
+```
 
-/**
-* Creating header for yml document
-*/
-
+I. Creating header for yml document
+```php
 $head = YmlFactory::getYml('head');
-
+```
 You can setting up header by few ways:
 
 1. Main part of settings you can set by config file (offer/config/config.php)
 
 2. Or using method setAllValues:
-
+```php
     $head->setAllValues($values);
-
+```
 where $values is array ['tag name' => 'value'], for example:
-
+```php
     [
         'name' => 'company name',
         'url' => 'url to your site main page',
         'platform' => 'platform name',
         etc....
     ]
-
+```
 Full list of tags see below
 
 Warning! This method has limitations. To set tags* that represent a list of values, 
@@ -50,72 +51,79 @@ use their own methods
 *Tags: 'currencies', 'categories', 'delivery-options'
 
 3. Or set parameters one by one:
+```php
     $head->setName($name)
     ->setCompany($company)
     ->setEmail($email)
     ->setCategory($categories)
     etc...;
+```
 
-/**
-*Creating offer for yml document
-*/
+II. Creating offers for yml document
 
-
+```php
 $simpleOffer = YmlFactory::getYml('simple');
 $eventOffer = YmlFactory::getYml('event');
 $audioBook = YmlFactory::getYml('bookAudio');
+```
 etc...
 
 
 You can setting up offer by few ways:
 
 1. Using method setAllValues:
-
+```php
     $simpleOffer->setAllValues($values);
-
+```
     where $values is array ['tag name' => 'value'], for example:
-
+```php    
     [
         'name' => 'product name',
         'price' => 'price',
         'vendor' => 'vendor name',
         etc....
     ]
+```
+Full list of tags see below
 
-    Full list of tags see below
-
-Warning! This method has limitations. To set tags* that represent a list of values, 
+Warning! This method has limitations. To set *tags that represent a list of values, 
 use their own methods
 
-*tags: 'delivery-options', 'outlets', 'barcode', 'picture', 'param', 'dimensions',
+*tags:  'delivery-options', 'outlets', 'barcode', 'picture', 'param', 'dimensions', 
         'rec', 'options'
 
 2. Or set parameters one by one:
+```php
     $simpleOffer->setName($name)
     ->setModel($model)
     ->setVendor($vendor)
     ->setDeliveryOptions($deliveryOptions)
     etc...;
+```
 
-/**
-* Generating XML
-*/
+III. Generating XML
 
+```php
 $generator = YmlFactory::getYml('generator');
-
+```
 You can generate XML (surprise) by few ways
 
-1.  $xml = $generator->generate($head->getHead(), $offers);
-    
+1. By using array of values
+```php
+$xml = $generator->generate($head->getHead(), $offers);
+```    
     where $offers - array with offers:
+```php
     [
         $simpleOffer->getOffer(),
         $eventOffer->getOffer(),
         $audioBook->getOffer(),
         etc...
     ]
-
-2.  $generator->generateHead($head->getHead());
+```
+2. Setting up offers one by one
+```php
+    $generator->generateHead($head->getHead());
     $generator->generateOffer($simpleOffer->getOffer());
     $generator->generateOffer($eventOffer->getOffer());
     $generator->generateOffer($audioBook->getOffer());
