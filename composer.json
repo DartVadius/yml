@@ -2,9 +2,9 @@
     "name": "dartvadius/ymlgenerator",
     "description": "generator YML (YandexMarket language)",
     "type": "library",
-    "version": "0.2",
+    "version": "0.9",
     "keywords": [
-        "yml", "generator", "YandexMarket"
+        "yml", "YandexMarket", "yml generator"
     ],
     "homepage": "https://github.com/DartVadius/yml",
     "license": "mit",
@@ -27,7 +27,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.9-dev"
         }
     }
 }
