@@ -15,6 +15,14 @@ class GeneratorYmlOffer {
     public function __construct() {
         $this->writer = new XMLWriter();
     }
+    
+    public function getWriter() {
+        return $this->writer->outputMemory();
+    }
+
+    public function setWriter() {
+        $this->writer = new XMLWriter();
+    }
 
     /**
      * create full xml document
